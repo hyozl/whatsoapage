@@ -102,7 +102,8 @@ ul, ol { list-style: none; }
 .quick-menu { display: none; }
 
 /* ---------- section common ---------- */
-.sec { padding: var(--sec-pad) 0; }
+.sec { padding: var(--sec-pad) 0; scroll-margin-top: 76px; }
+@media (max-width: 767px) { .sec { scroll-margin-top: 96px; } }
 .sec-off { background: var(--off); }
 .sec-head { text-align: center; margin-bottom: 64px; }
 .sec-title { margin-top: 26px; font-size: var(--fs-sec-title); font-weight: 700; line-height: 1.35; }
@@ -289,8 +290,8 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius
 .pm::after { transform: rotate(90deg); transition: transform .2s; }
 .is-open > button .pm::before, .is-open > button .pm::after { background: var(--primary); }
 .is-open > button .pm::after { transform: rotate(0); }
-.track-a { display: none; padding: 0 28px 24px 72px; }
-.track.is-open .track-a { display: block; }
+.track-a { display: grid; grid-template-rows: 0fr; padding: 0 28px 0 72px; transition: grid-template-rows .35s ease, padding .35s ease; }
+.track.is-open .track-a { grid-template-rows: 1fr; padding-bottom: 24px; }
 .track-a p { font-size: 16px; color: var(--g700); line-height: 1.6; }
 .track-bar { display: block; margin-top: 16px; height: 4px; border-radius: 2px; background: rgba(255,255,255,.9); overflow: hidden; }
 .track-bar i { display: block; height: 100%; width: 38%; background: var(--primary); }
@@ -343,8 +344,8 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius
 .faq-q i { font-style: normal; font-weight: 900; color: var(--primary); }
 .faq-q b { flex: 1; font-size: 18px; }
 .faq li.is-open .faq-q b { color: var(--primary); }
-.faq-a { display: none; padding: 0 28px 24px 62px; }
-.faq li.is-open .faq-a { display: block; }
+.faq-a { display: grid; grid-template-rows: 0fr; padding: 0 28px 0 62px; transition: grid-template-rows .35s ease, padding .35s ease; }
+.faq li.is-open .faq-a { grid-template-rows: 1fr; padding-bottom: 24px; }
 .faq-a p { font-size: 16px; line-height: 1.65; color: var(--g700); }
 .faq-more { margin-top: 36px; text-align: center; font-size: 15px; font-weight: 700; color: var(--primary); }
 
@@ -484,7 +485,8 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius
   .track-q { padding: 16px 18px; gap: 12px; }
   .track-q .en-label { display: none; }
   .track-q b { font-size: 15px; }
-  .track-a { padding: 0 18px 18px 54px; }
+  .track-a { padding: 0 18px 0 54px; }
+  .track.is-open .track-a { padding-bottom: 18px; }
   .track-a p { font-size: 14px; line-height: 1.5; }
 
   .split { grid-template-columns: 1fr; gap: 12px; }
@@ -519,7 +521,8 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius
   .faq li { border-radius: 14px; }
   .faq-q { padding: 16px 18px; gap: 12px; }
   .faq-q b { font-size: 15px; }
-  .faq-a { padding: 0 18px 18px 44px; }
+  .faq-a { padding: 0 18px 0 44px; }
+  .faq li.is-open .faq-a { padding-bottom: 18px; }
   .faq-a p { font-size: 14px; line-height: 1.5; }
   .faq-more { margin-top: 28px; }
 
@@ -535,6 +538,86 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius
   .ft-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
 }
 
+
+/* =========================================================
+   Motion — 스크롤 등장, 진행바, 히어로 화면, 펼침 등
+   (prefers-reduced-motion 이면 아래 reduce 규칙으로 모두 꺼짐)
+   ========================================================= */
+.acc-inner { overflow: hidden; min-height: 0; }
+
+/* 스크롤 등장: JS가 .reveal 을 붙이고, 화면에 들어오면 .is-in */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0s); }
+.reveal.is-in { opacity: 1; transform: none; }
+
+/* 헤더: 스크롤하면 그림자 */
+.site-header { transition: box-shadow .25s; }
+.site-header.is-scrolled { box-shadow: 0 4px 20px rgba(22,18,29,.06); }
+
+/* 히어로 화면: 채팅이 하나씩 올라오고, 재생바가 흐름 */
+.stage-chat li { opacity: 0; transform: translateY(10px); transition: opacity .5s, transform .5s; }
+.stage-chat li.is-show { opacity: 1; transform: none; }
+.stage-bar i { transition: width .25s linear; }
+.stage-play { transition: transform .2s; }
+.stage-play:hover { transform: scale(1.06); }
+.stage-play::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(255,255,255,.7); animation: ring 2.4s ease-out infinite; }
+@keyframes ring { from { transform: scale(1); opacity: .8; } to { transform: scale(1.6); opacity: 0; } }
+.stage-glow { animation: breathe 6s ease-in-out infinite; }
+@keyframes breathe { 50% { transform: scale(1.08); opacity: .85; } }
+.chip-live { position: relative; padding-left: 20px; }
+.chip-live::before { content: ""; position: absolute; left: 9px; top: 50%; width: 6px; height: 6px; margin-top: -3px; border-radius: 50%; background: #fff; animation: blink 1.2s steps(2) infinite; }
+@keyframes blink { 50% { opacity: .2; } }
+.hero-choice .btn-ghost:hover { background: var(--tint); }
+
+/* 스텝 플레이어: 마우스를 올리면 잠시 멈춤 표시 */
+.step-player.is-paused .step.is-active .step-bar i { animation-play-state: paused; }
+
+/* 03 가격 말풍선이 금액 바뀔 때 살짝 튐 */
+.price-tip.bump { animation: bump .25s ease; }
+@keyframes bump { 50% { transform: scale(1.06); } }
+.modes li { transition: transform .2s, box-shadow .2s; }
+.modes li:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(22,18,29,.06); }
+
+/* 04 재생목록: 누르면 그 항목이 NOW PLAYING */
+.pl-item { cursor: pointer; transition: background .2s; }
+.pl-item:not(.is-now):hover { background: rgba(148,80,231,.06); }
+.pl-item .eq { display: none; }
+.pl-item.is-now .eq { display: flex; }
+.pl-item:not(.is-now) .thumb::after { content: ""; position: absolute; left: 50%; top: 50%; translate: -40% -50%; border-left: 10px solid rgba(255,255,255,.85); border-top: 6px solid transparent; border-bottom: 6px solid transparent; opacity: 0; transition: opacity .2s; }
+.pl-item:not(.is-now):hover .thumb::after { opacity: 1; }
+
+/* 05·06 카드 */
+.tile { transition: transform .25s; }
+.tile:hover { transform: translateY(-4px); }
+.tile-sym.play { transition: transform .25s; }
+.tile-live:hover .tile-sym.play { transform: scale(1.06); }
+.tile-wow:hover .tile-sym.heart svg { animation: beat .8s ease-in-out infinite; }
+@keyframes beat { 30% { transform: scale(1.15); } 60% { transform: scale(.95); } }
+
+/* 07 열린 항목의 재생바가 차오름 */
+.track-bar i { width: 0; transition: width 1.6s ease .2s; }
+.track.is-open .track-bar i { width: 38%; }
+
+/* 챕터 구분선: 스크롤한 만큼 진행 (JS가 --cd 값을 바꿈) */
+.cd-track i { width: var(--cd, 0%) !important; transition: width .1s linear; }
+
+/* 09 타임라인: 스크롤하면 선이 채워지고 점이 켜짐 */
+.timeline::before { content: ""; position: absolute; left: 10px; top: 10px; width: 2px; height: var(--tl, 0%); max-height: calc(100% - 40px); background: var(--primary); z-index: 1; transition: height .15s linear; }
+.timeline li::before { z-index: 2; transition: background .3s, transform .3s; }
+.timeline li.is-on::before { background: var(--primary); }
+.timeline li.is-open.is-on::before { animation: pop .6s ease; }
+@keyframes pop { 50% { transform: scale(1.3); } }
+
+/* 11 엔딩: 화면이 꺼지듯 선이 가운데로 줄어듦 */
+.ending-line { transition: width 1.2s ease .3s, opacity 1.2s ease .3s; }
+.ending-screen.is-in .ending-line { width: 12%; opacity: .5; }
+
+@media (max-width: 767px) {
+  .reveal { transform: translateY(16px); }
+  .timeline::before { left: 10px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+  .stage-chat li { opacity: 1; transform: none; }
 }

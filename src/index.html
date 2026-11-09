@@ -50,7 +50,7 @@
             <div class="stage-glow"></div>
             <div class="stage-top">
               <span class="chip-live">LIVE</span>
-              <span class="chip-dim">지금 128명 관람 중</span>
+              <span class="chip-dim">지금 <span data-viewers>128</span>명 관람 중</span>
             </div>
             <button class="stage-play" aria-label="재생"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
             <ul class="stage-chat" aria-hidden="true">
@@ -60,9 +60,9 @@
             </ul>
             <div class="stage-bottom">
               <span class="stage-title">연극 · 작품명</span>
-              <span class="stage-time">02:14 / 05:30</span>
+              <span class="stage-time"><span data-stage-time>02:14</span> / 05:30</span>
             </div>
-            <div class="stage-bar"><i style="width:40%"></i></div>
+            <div class="stage-bar"><i data-stage-bar style="width:40%"></i></div>
           </div>
           <div class="hero-choice">
             <a class="btn btn-primary" href="https://oalive.kr"><span class="tri"></span>관객으로 둘러보기</a>
@@ -71,10 +71,10 @@
         </div>
 
         <ul class="stats">
-          <!-- TODO: 실제 숫자 확인 후 입력 -->
-          <li><strong class="en">000<small>편+</small></strong><span>등록 작품</span></li>
-          <li><strong class="en">000<small>팀+</small></strong><span>참여 아티스트</span></li>
-          <li><strong class="en">000<small>회+</small></strong><span>누적 관람</span></li>
+          <!-- TODO: 실제 숫자 확인 후 data-count 에 입력하면 0부터 올라가는 카운트가 동작해요 (예: data-count="320") -->
+          <li><strong class="en" data-count=""><span class="num">000</span><small>편+</small></strong><span>등록 작품</span></li>
+          <li><strong class="en" data-count=""><span class="num">000</span><small>팀+</small></strong><span>참여 아티스트</span></li>
+          <li><strong class="en" data-count=""><span class="num">000</span><small>회+</small></strong><span>누적 관람</span></li>
         </ul>
       </div>
     </section>
