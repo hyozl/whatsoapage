@@ -159,14 +159,14 @@ Figma **`자료 · 캡처`** 페이지의 캡처를 PNG로 내보내 아래 이�
 아직 배포 전이에요. 정적 파일이라 `src/` 폴더를 그대로 올리면 돼요.
 
 - 기존 사이트에 넣을 때: `src/index.html`의 `<main>` 안 섹션과 `css/style.css`, `js/main.js`를 현재 오아라이브 페이지 구조에 맞게 옮겨요. (헤더·푸터는 기존 것을 사용)
-- 미리보기용: GitHub Pages에서 `src/` 폴더를 배포 대상으로 지정해 확인할 수 있어요.
+- 미리보기: `main`에 올리면 GitHub Actions(`.github/workflows/pages.yml`)가 `src/` 폴더를 GitHub Pages로 자동 배포해요. 처음 한 번 **Settings → Pages → Source를 "GitHub Actions"** 로 바꿔 주세요.
 
 ## 관련 링크
 
 - 기획 문서: 내부 보관 (공개 저장소라 올리지 않아요)
 - 디자인: Figma `서비스 소개` 페이지 (Desktop 1920 / Mobile 375), 섹션별 시안은 `시안 · 01`~`시안 · 10` 페이지
 - 현재 페이지: https://oalive.kr/whatsoa
-- 배포 주소: (배포 후 추가)
+- 미리보기 주소: https://hyozl.github.io/whatsoapage/ (Pages 설정 후)
 
 ## 참고
 
