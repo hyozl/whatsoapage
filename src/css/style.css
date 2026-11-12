@@ -692,3 +692,108 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius
 
   .gnb, .quick-menu { font-size: 13px; }
 }
+
+/* =========================================================
+   Soft theme (2026-11-12) — 토스(toss.im) 모바일 무드 참고
+   · 실측: 큰 제목 36/700(자간 -2%) · 소제목 18/600~700 #333D4B · 본문 14 #6B7684
+   · 회색 둥근 상자(#F2F4F6) 안에 화면을 담고, 버튼은 회색 알약 + 검은 원형 화살표
+   · 보라는 연하게: 넓은 면은 연보라 그라데이션, 진한 보라는 글자·포인트에만
+   ========================================================= */
+:root {
+  --ink: #191f28;       /* 제목 */
+  --ink-2: #333d4b;     /* 소제목 */
+  --ink-3: #6b7684;     /* 본문·설명 */
+  --ink-4: #8b95a1;     /* 보조 */
+  --gray-bg: #f2f4f6;   /* 회색 상자 */
+  --gray-bg-2: #f9fafb;
+  --lav-1: #f6f1ff;     /* 연보라 */
+  --lav-2: #ebe1fd;
+  --lav-3: #dccbfb;
+  --lav-grad: linear-gradient(160deg, #f7f2ff 0%, #ece2fd 55%, #ddd0fb 100%);
+  --primary-soft: #a77cf0; /* 큰 영문 제목용 연한 보라 */
+  --g700: var(--ink-3);
+  --g500: var(--ink-4);
+  --black: var(--ink);
+  --off: var(--gray-bg);
+  --tint: var(--lav-1);
+  --border-l: #e5e8eb;
+}
+body { color: var(--ink); letter-spacing: -0.01em; }
+.sec-title, .hero-title, .cta-copy h2, .tile-stmt h3, .ending-screen h2 { letter-spacing: -0.02em; }
+.en-title { color: var(--primary-soft); -webkit-text-stroke: .012em currentColor; }
+.sec-off { background: var(--gray-bg-2); }
+
+/* 헤더: 반투명 유리 */
+.site-header { background: rgba(255,255,255,.78); -webkit-backdrop-filter: saturate(180%) blur(16px); backdrop-filter: saturate(180%) blur(16px); border-bottom-color: transparent; }
+.site-header.is-scrolled { box-shadow: none; border-bottom-color: rgba(0,0,0,.05); }
+
+/* 버튼: 주 버튼은 보라 알약(그림자 없음), 보조 버튼은 회색 알약 + 검은 원형 화살표 */
+.btn { font-weight: 600; letter-spacing: -0.01em; }
+.btn-primary { box-shadow: none; }
+.btn-primary:hover { background: #8743dd; }
+.btn-line, .btn-ghost { background: var(--gray-bg); color: var(--ink); border: 0; padding-right: 8px; gap: 14px; }
+.btn-line::after, .btn-ghost::after {
+  content: ""; width: 36px; height: 36px; border-radius: 50%; flex: none;
+  background: var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / 18px no-repeat;
+}
+.btn-line:hover, .btn-ghost:hover { background: #e8ebee; }
+
+/* 회색 상자 안에 기기 화면 */
+.devices { background: var(--gray-bg); border-radius: 32px; padding: 56px 56px 0; overflow: hidden; }
+.devices .phone { right: 64px; bottom: -40px; }
+.curation .laptop { background: var(--gray-bg); border-radius: 32px; padding: 48px 48px 0; overflow: hidden; width: 760px; }
+
+/* 카드·목록: 회색 면, 선 없음 */
+.modes li, .playlist, .track, .faq li, .oa, .tile-stmt { background: var(--gray-bg); border: 0; }
+.modes li strong, .tile-stmt h3, .oa li b, .track-q b, .faq-q b, .pl-txt b { color: var(--ink-2); font-weight: 600; }
+.modes p, .tile p, .oa li p, .track-a p, .faq-a p, .pl-txt small, .timeline p, .step p { color: var(--ink-3); }
+
+/* 진한 보라 면 → 연보라 그라데이션 (글자는 진하게) */
+.modes li.is-accent, .tile-live, .you, .end-card.is-aud { background: var(--lav-grad); color: var(--ink); border: 0; box-shadow: none; }
+.modes li.is-accent .en-label, .tile-live .en, .you .en-label, .end-card.is-aud .en-label { color: var(--primary); }
+.modes li.is-accent p, .tile-live p, .you p, .you small, .end-card.is-aud small { color: var(--ink-3); opacity: 1; }
+.tile-live h3.en { color: var(--primary); }
+.tile-sym.play, .ec-play:not(.glass) { background: rgba(255,255,255,.75); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.you strong, .end-card.is-aud strong { color: var(--ink); }
+.track.is-open, .faq li.is-open, .pl-item.is-now { background: var(--lav-1); }
+.track.is-open .track-q b, .faq li.is-open .faq-q b { color: var(--primary); }
+.tile-price { background: var(--lav-1); }
+.cta-band { background: var(--gray-bg-2); }
+.tabs { background: var(--gray-bg); }
+
+/* 둥근 정도 통일 */
+.modes li, .track, .faq li { border-radius: 20px; }
+.tile, .you, .oa, .playlist, .end-card { border-radius: 28px; }
+
+@media (max-width: 767px) {
+  /* 토스처럼 왼쪽 정렬 · 큰 제목은 크게, 나머지는 작고 회색으로 */
+  :root { --fs-sec-title: 26px; --fs-sec-desc: 14px; --fs-en-title: 22px; }
+  .sec-head, .hero, .en-title { text-align: left; }
+  .sec-head { margin-bottom: 28px; }
+  .sec-title { margin-top: 10px; line-height: 1.38; }
+  .sec-desc { margin-top: 10px; color: var(--ink-3); line-height: 1.6; }
+  .eyebrow { font-size: 12px; }
+  .hero-title { font-size: 30px; line-height: 1.32; }
+  .hero-desc { color: var(--ink-3); }
+  .stats { justify-content: flex-start; gap: 28px; }
+  .hero-choice { margin: -16px 0 0; }
+
+  .btn { height: 48px; font-size: 15px; }
+  .btn-line, .btn-ghost { padding-left: 22px; padding-right: 6px; justify-content: space-between; }
+  .btn-line::after, .btn-ghost::after { width: 34px; height: 34px; background-size: 16px; }
+  .sec-cta { text-align: left; }
+  .sec-cta .btn-line { width: auto; }
+
+  .devices { border-radius: 24px; padding: 28px 22px 0; }
+  .devices .phone { right: 22px; bottom: -24px; }
+
+  .modes li strong, .tile-stmt h3, .you strong, .end-card strong { font-size: 18px; }
+  .modes li, .track, .faq li { border-radius: 18px; }
+  .tile, .you, .oa, .playlist, .end-card { border-radius: 24px; }
+  .weeks-head .en-title { font-size: 22px; }
+  .weeks-head .sec-title { font-size: 26px; }
+  .cta-copy h2, .ending-screen h2 { font-size: 24px; }
+  .ending-screen { text-align: left; }
+  .ending-cta { align-items: stretch; }
+  .tabs { margin-left: 0; }
+}
