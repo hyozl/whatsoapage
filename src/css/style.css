@@ -912,3 +912,9 @@ body { color: var(--ink); letter-spacing: -0.01em; }
 @media (max-width:767px){ .hero-choice .btn-ghost { padding: 0 20px; } }
 /* 가격 슬라이더 끝: WOW */
 .price-tip b.en { font-family: "Ordinary Artist", "Noto Sans KR", sans-serif; font-weight: 400; letter-spacing: .04em; }
+
+/* 히어로 유튜브 */
+.stage-play { cursor: pointer; transition: transform .2s; z-index: 2; }
+.stage-play:hover { transform: scale(1.06); }
+.stage-video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 5; background: #000; }
+.stage-screen.is-playing > :not(.stage-video) { visibility: hidden; }

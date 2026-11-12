@@ -71,6 +71,24 @@
 
   /* ---------- 01 히어로 화면: 채팅이 하나씩 올라오고, 재생바·시간이 흐름 ---------- */
   const stage = $('.stage-screen');
+  /* ---------- 히어로 유튜브: ▶ 누르면 그 자리에서 재생 ---------- */
+  if (stage && stage.dataset.yt) {
+    const playBtn = $('.stage-play', stage);
+    const start = parseInt(stage.dataset.ytStart || '0', 10);
+    const play = () => {
+      if (stage.classList.contains('is-playing')) return;
+      const f = document.createElement('iframe');
+      f.className = 'stage-video';
+      f.src = 'https://www.youtube-nocookie.com/embed/' + stage.dataset.yt +
+        '?autoplay=1&start=' + start + '&rel=0&playsinline=1&modestbranding=1';
+      f.title = '오아라이브 공연 영상';
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+      stage.appendChild(f);
+      stage.classList.add('is-playing');
+    };
+    playBtn && playBtn.addEventListener('click', play);
+  }
   if (stage) {
     const chats = $$('.stage-chat li', stage);
     const bar = $('[data-stage-bar]', stage);
