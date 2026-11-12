@@ -79,13 +79,22 @@
       if (stage.classList.contains('is-playing')) return;
       const f = document.createElement('iframe');
       f.className = 'stage-video';
-      f.src = 'https://www.youtube-nocookie.com/embed/' + stage.dataset.yt +
+      f.src = 'https://www.youtube.com/embed/' + stage.dataset.yt +
         '?autoplay=1&start=' + start + '&rel=0&playsinline=1&modestbranding=1';
       f.title = '오아라이브 공연 영상';
       f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
       f.allowFullscreen = true;
       stage.appendChild(f);
       stage.classList.add('is-playing');
+      // 영상이 막힌 환경을 위해 유튜브에서 바로 보는 링크도 함께
+      if (!$('.stage-yt-link')) {
+        const a = document.createElement('a');
+        a.className = 'stage-yt-link';
+        a.href = 'https://www.youtube.com/watch?v=' + stage.dataset.yt + '&t=' + start + 's';
+        a.target = '_blank'; a.rel = 'noopener';
+        a.textContent = '영상이 안 나오면 유튜브에서 보기 ↗';
+        ($('.hero-choice') || stage).insertAdjacentElement('afterend', a);
+      }
     };
     playBtn && playBtn.addEventListener('click', play);
   }
