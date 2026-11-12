@@ -141,7 +141,8 @@ ul, ol { list-style: none; }
 .stats { margin-top: 56px; display: flex; justify-content: center; gap: 120px; }
 .stats strong { display: block; font-size: 56px; font-weight: 400; color: var(--primary); -webkit-text-stroke: .02em currentColor; line-height: 1.1; }
 .stats small { font-family: "Noto Sans KR"; font-size: .55em; font-weight: 700; -webkit-text-stroke: 0; margin-left: 2px; }
-.stats span { display: block; margin-top: 8px; font-size: 15px; color: var(--g700); }
+.stats li > span { display: block; margin-top: 8px; font-size: 15px; color: var(--g700); }
+.stats .num { display: inline; }
 
 /* ---------- device mockups ---------- */
 .laptop { width: 820px; max-width: 100%; }
@@ -411,7 +412,7 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius
   .hero-choice .btn { width: 100%; }
   .stats { margin-top: 28px; gap: 0; justify-content: space-between; }
   .stats strong { font-size: 26px; }
-  .stats span { font-size: 13px; margin-top: 4px; }
+  .stats li > span { font-size: 13px; margin-top: 4px; }
 
   .devices { padding-right: 70px; }
   .devices .laptop { width: 100%; }
@@ -620,4 +621,74 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
   .stage-chat li { opacity: 1; transform: none; }
+}
+
+/* =========================================================
+   Mobile type scale v2 (2026-11-12)
+   참고: 실제 모바일(375px) 측정 — 당근 섹션 제목 20 · 본문 14 · 버튼 40/14,
+   라프텔 섹션 제목 18 · 본문 13, 토스 랜딩 본문 14~17.
+   서비스 소개 페이지는 당근 수준으로 맞춤: 히어로 24 · 섹션 제목 20 · 항목 제목 16 · 본문 14 · 보조 13 · 라벨 12 · 버튼 44/14
+   ========================================================= */
+@media (max-width: 767px) {
+  :root { --fs-en-title: 26px; --fs-sec-title: 20px; --fs-sec-desc: 14px; }
+  body { font-size: 14px; }
+  .btn { height: 44px; font-size: 14px; padding: 0 18px; }
+
+  .eyebrow { font-size: 12px; }
+  .hero-title { font-size: 24px; line-height: 1.35; }
+  .hero-desc { font-size: 14px; }
+  .stats strong { font-size: 22px; }
+  .stats li > span { font-size: 12px; }
+
+  .sec-title { margin-top: 12px; }
+  .sec-desc { margin-top: 8px; }
+  .en-label { font-size: 12px; }
+
+  .step-no { font-size: 11px; }
+  .step strong { font-size: 16px; }
+  .step p { font-size: 13px; }
+
+  .price-tip b { font-size: 20px; }
+  .price-tip small { font-size: 11px; }
+  .modes strong { font-size: 16px; }
+  .modes p { font-size: 13px; }
+
+  .playlist-head strong { font-size: 16px; }
+  .pl-txt b { font-size: 14px; }
+  .pl-txt small { font-size: 12px; }
+
+  .cta-copy h2 { font-size: 20px; }
+  .cta-copy p:last-child { font-size: 14px; }
+  .end-card strong { font-size: 17px; }
+  .end-card small { font-size: 12px; }
+  .end-card .en-label { font-size: 11px; }
+
+  .tile h3.en, .tile-wow h3.en { font-size: 20px; }
+  .tile p { font-size: 13px; }
+  .tile-stmt h3 { font-size: 16px; }
+
+  .track-q b { font-size: 14px; }
+  .track-a p { font-size: 13px; }
+
+  .you strong { font-size: 18px; }
+  .you small, .oa > small, .you p { font-size: 13px; }
+  .oa li b { font-size: 14px; }
+  .oa li p { font-size: 12px; }
+
+  .weeks-head .en-title { font-size: 26px; }
+  .weeks-head .sec-title { font-size: 20px; }
+  .timeline b { font-size: 16px; }
+  .timeline p { font-size: 13px; }
+  .timeline .en-label { font-size: 11px; }
+  .note { font-size: 12px; }
+
+  .tabs button { font-size: 13px; padding: 7px 20px; }
+  .faq-q b { font-size: 14px; }
+  .faq-a p { font-size: 13px; }
+  .faq-more { font-size: 13px; }
+
+  .ending-screen h2 { font-size: 20px; }
+  .ending-screen p { font-size: 13px; }
+
+  .gnb, .quick-menu { font-size: 13px; }
 }
