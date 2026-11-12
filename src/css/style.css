@@ -834,3 +834,25 @@ body { color: var(--ink); letter-spacing: -0.01em; }
   .container.narrow { max-width: var(--container); }
   .tracklist, .faq { max-width: 880px; }
 }
+
+/* =========================================================
+   Spacing fix (2026-11-12)
+   · 데스크톱 07 FEATURES · 10 FAQ: 왼쪽 제목(400) + 오른쪽 목록 2단 → 오른쪽 빈 공간 없앰
+   · 모바일 좌우 여백 20 → 24 (토스 20~28, 리틀리 16~28, 당근 16 실측 참고)
+   ========================================================= */
+@media (min-width: 768px) {
+  #features .container, #faq .container {
+    display: grid; grid-template-columns: 400px minmax(0, 1fr); column-gap: 96px; align-items: start;
+  }
+  #features .sec-head, #faq .sec-head { grid-column: 1; grid-row: 1; margin-bottom: 0; }
+  #features .tracklist { grid-column: 2; grid-row: 1; max-width: none; }
+  #faq .container { grid-template-rows: auto auto 1fr; }
+  #faq .tabs { grid-column: 1; grid-row: 2; margin: 32px 0 0; }
+  #faq .faq-more { grid-column: 1; grid-row: 3; margin-top: 32px; align-self: start; }
+  #faq .faq { grid-column: 2; grid-row: 1 / span 3; max-width: none; }
+}
+@media (max-width: 767px) {
+  .container { width: calc(100% - 48px); }
+  .quick-menu { padding-left: 24px; padding-right: 24px; }
+  .header-bar { width: calc(100% - 48px); }
+}
