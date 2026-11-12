@@ -868,3 +868,15 @@ body { color: var(--ink); letter-spacing: -0.01em; }
   .devices .phone::before { top: 4px; width: 30%; height: 4px; }
   .devices .phone-screen { border-radius: 8px; padding-top: 6px; }
 }
+
+/* 헤더: 모바일은 실제 오아라이브처럼 검색 + 햄버거 메뉴, 데스크톱은 프로필 */
+.menu-btn { display: none; }
+@media (max-width: 767px) {
+  .site-header { background: rgba(247,247,247,.92); }
+  .avatar { display: none; }
+  .menu-btn { display: grid; }
+  .site-header .oa-ico { font-size: 28px; }
+  .icon-btn { width: 36px; height: 36px; }
+  .header-util { gap: 12px; }
+  .quick-menu { justify-content: space-between; }
+}
