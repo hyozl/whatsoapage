@@ -857,10 +857,14 @@ body { color: var(--ink); letter-spacing: -0.01em; }
   .header-bar { width: calc(100% - 48px); }
 }
 
-/* 02 모바일 목업 (Figma 스텝 플레이어 모바일과 동일): 회색 상자 230px, 노트북 왼쪽 · 폰 오른쪽(아래로 살짝 넘침) */
+/* 02 모바일 목업: PC 구도 그대로 축소 (PC 상자 1200×600 기준 비율) */
 @media (max-width: 767px) {
-  .devices { position: relative; display: block; height: 230px; padding: 0; border-radius: 24px; overflow: hidden; }
-  .devices .laptop { position: absolute; left: 16px; top: 50%; translate: 0 -42%; width: 62%; }
-  .devices .phone { position: absolute; right: 16px; top: 20px; bottom: auto; width: 36%; border-radius: 22px; padding: 4px; }
-  .devices .phone-screen { border-radius: 18px; padding-top: 16px; }
+  .devices { position: relative; display: block; aspect-ratio: 2 / 1; height: auto; padding: 0; border-radius: 18px; overflow: hidden; max-width: 100%; }
+  .devices .laptop { position: absolute; left: 6.67%; top: auto; bottom: 0; width: 76.67%; translate: none; }
+  .devices .laptop-lid { padding: 5px 5px 6px; }
+  .devices .laptop-screen { aspect-ratio: 16 / 8.8; }
+  .devices .laptop-base { height: 6px; }
+  .devices .phone { position: absolute; left: 72.5%; right: auto; top: 35.5%; bottom: auto; width: 17.5%; border-radius: 10px; padding: 2px; }
+  .devices .phone::before { top: 4px; width: 30%; height: 4px; }
+  .devices .phone-screen { border-radius: 8px; padding-top: 6px; }
 }
