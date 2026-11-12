@@ -162,12 +162,18 @@
   const range = $('[data-price]');
   const tipBox = $('[data-price-tip]');
   const tip = tipBox && $('b', tipBox);
+  const tipLabel = tipBox && $('small', tipBox);
   if (range && tip) {
     const update = (bump) => {
       const p = ((range.value - range.min) / (range.max - range.min)) * 100;
       range.parentElement.style.setProperty('--p', p + '%');
       range.style.setProperty('--p', p + '%');
-      tip.textContent = '₩ ' + Number(range.value).toLocaleString('ko-KR');
+      const isMax = Number(range.value) >= Number(range.max);
+      // 끝까지 밀면 금액 대신 WOW 글자로
+      tip.textContent = isMax ? 'WOW' : '₩ ' + Number(range.value).toLocaleString('ko-KR');
+      tip.classList.toggle('en', isMax);
+      tipBox.classList.toggle('is-wow', isMax);
+      if (tipLabel) tipLabel.textContent = isMax ? '원하는 만큼' : '내가 정한 금액';
       range.setAttribute('aria-valuetext', Number(range.value).toLocaleString('ko-KR') + '원');
       if (bump) { tipBox.classList.remove('bump'); void tipBox.offsetWidth; tipBox.classList.add('bump'); }
     };

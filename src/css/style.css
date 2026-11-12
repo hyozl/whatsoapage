@@ -889,3 +889,26 @@ body { color: var(--ink); letter-spacing: -0.01em; }
 .ec-play, .tile-sym.play { border-radius: 50%; }
 .ec-play svg, .tile-sym.play svg, .stage-play svg { translate: 1px 0; }
 @media (max-width:767px){ .ending-screen{text-align:center;} .ending-cta{justify-content:center;} }
+
+/* 회색 버튼 hover → 보라 */
+.btn-line, .btn-ghost { transition: background-color .2s, color .2s, transform .15s; }
+.btn-line::after, .btn-ghost::after { transition: background-color .2s; }
+.btn-line:hover, .btn-ghost:hover, .hero-choice .btn-ghost:hover { background: var(--primary); color: #fff; }
+.btn-line:hover::after, .btn-ghost:hover::after {
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239450E7' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / 18px no-repeat;
+}
+@media (max-width:767px){
+  .hero-choice .btn-ghost { justify-content: center; padding-left: 6px; }
+  .btn-line:hover::after, .btn-ghost:hover::after { background-size: 16px; }
+}
+/* 히어로 아티스트 버튼: 위 버튼처럼 가운데 + 작은 아이콘 */
+.hero-choice .btn-ghost { justify-content: center; padding: 0 28px; gap: 8px; }
+.hero-choice .btn-ghost::after, .hero-choice .btn-ghost:hover::after {
+  width: 16px; height: 16px; border-radius: 0; background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23191f28' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
+  background-size: 16px;
+}
+.hero-choice .btn-ghost:hover::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E"); }
+@media (max-width:767px){ .hero-choice .btn-ghost { padding: 0 20px; } }
+/* 가격 슬라이더 끝: WOW */
+.price-tip b.en { font-family: "Ordinary Artist", "Noto Sans KR", sans-serif; font-weight: 400; letter-spacing: .04em; }
