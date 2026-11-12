@@ -884,3 +884,8 @@ body { color: var(--ink); letter-spacing: -0.01em; }
   .devices .phone::before { top: 4px; width: 30%; height: 4px; }
   .devices .phone-screen { border-radius: 9px; padding-top: 6px; }
 }
+
+/* 아이콘·정렬 정리 */
+.ec-play, .tile-sym.play { border-radius: 50%; }
+.ec-play svg, .tile-sym.play svg, .stage-play svg { translate: 1px 0; }
+@media (max-width:767px){ .ending-screen{text-align:center;} .ending-cta{justify-content:center;} }
