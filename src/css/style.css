@@ -920,3 +920,24 @@ body { color: var(--ink); letter-spacing: -0.01em; }
 .stage-screen.is-playing > :not(.stage-video) { visibility: hidden; }
 .stage-yt-link { display: block; margin-top: 16px; text-align: center; font-size: 13px; color: var(--ink-3); text-decoration: underline; text-underline-offset: 3px; }
 @media (min-width:768px){ .stage-yt-link { position: absolute; left: 0; right: 0; bottom: -36px; margin: 0; } }
+
+/* 바로가기 (검은 원 + ↗) : 카드 오른쪽 아래 */
+.shortcut {
+  position: absolute; right: 20px; bottom: 20px; width: 56px; height: 56px; border-radius: 50%;
+  background: #000; color: #fff; display: grid; place-items: center;
+  transition: background-color .2s, transform .2s;
+}
+.shortcut svg { width: 24px; height: 24px; transition: transform .2s; }
+.shortcut:hover { background: var(--primary); }
+.shortcut:hover svg { transform: translate(2px, -2px); }
+.playlist, .tile-stmt { position: relative; }
+.playlist { padding-bottom: 84px; }
+.curation { align-items: stretch; }
+.curation .laptop { display: flex; flex-direction: column; justify-content: flex-end; }
+@media (max-width:767px){
+  .shortcut { right: 14px; bottom: 14px; width: 44px; height: 44px; }
+  .shortcut svg { width: 20px; height: 20px; }
+  .playlist { padding-bottom: 66px; }
+  .tile-stmt .shortcut { right: 16px; bottom: 16px; }
+  .tile-stmt { padding-bottom: 72px; }
+}
