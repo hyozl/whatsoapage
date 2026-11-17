@@ -941,3 +941,15 @@ body { color: var(--ink); letter-spacing: -0.01em; }
   .tile-stmt .shortcut { right: 16px; bottom: 16px; }
   .tile-stmt { padding-bottom: 72px; }
 }
+
+/* 아티스트 소개서 (구글 드라이브) */
+.deck-link { position: absolute; right: 20px; bottom: 20px; display: inline-flex; align-items: center; gap: 12px; font-weight: 700; font-size: 16px; color: var(--ink); }
+.deck-link .shortcut { position: static; }
+.deck-link:hover .shortcut { background: var(--primary); }
+.deck-link:hover .shortcut svg { transform: translate(2px, -2px); }
+.text-link { display: inline-block; margin-top: 16px; font-size: 15px; font-weight: 500; color: var(--ink-3); text-decoration: underline; text-underline-offset: 3px; }
+.text-link:hover { color: var(--primary); }
+@media (max-width:767px){
+  .deck-link { right: 16px; bottom: 16px; font-size: 14px; gap: 10px; }
+  .weeks-head .text-link { order: 4; align-self: center; margin-top: 16px; font-size: 14px; }
+}
