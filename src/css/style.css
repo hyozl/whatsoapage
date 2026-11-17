@@ -1040,24 +1040,3 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border: 2px s
 /* 모니터 목업 주변 칸(상자) 없애기 */
 .devices, .curation .laptop { background: transparent !important; border: 0 !important; box-shadow: none !important; }
 .devices::before, .devices::after, .curation .laptop::before { display: none !important; }
-
-/* ---------- 손그림 일러스트 ---------- */
-.illust { display: block; height: auto; pointer-events: none; }
-.illust-lights { width: 320px; margin: 0 auto 20px; }
-.illust-rope { width: 300px; margin-top: 28px; }
-.illust-wings { width: 88px; margin-bottom: 12px; }
-.illust-title { line-height: 0; }
-.illust-title img { width: 640px; max-width: 100%; height: auto; display: block; }
-.illust-h3 { line-height: 0; }
-.illust-h3 img { width: 300px; max-width: 100%; height: auto; display: block; }
-.ending-screen { position: relative; overflow: hidden; }
-.illust-night { position: absolute; left: 50%; top: 50%; width: min(900px, 100%); translate: -50% -50%; opacity: .22; pointer-events: none; z-index: 0; }
-.ending-screen > *:not(.illust-night) { position: relative; z-index: 1; }
-@media (max-width:767px){
-  .illust-lights { width: 200px; margin: 0 0 16px; }
-  .illust-rope { width: 220px; margin-top: 20px; }
-  .illust-wings { width: 64px; }
-  .illust-title img { width: 100%; }
-  .illust-h3 img { width: 140px; }
-  .illust-night { width: 300px; }
-}

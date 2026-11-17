@@ -168,21 +168,6 @@ Figma **`자료 · 캡처`** 페이지의 캡처를 PNG로 내보내 아래 이�
 - 보라색 영문 큰 제목(PAY AS YOU LIKE 등)은 웹에서는 글자라 바로 고칠 수 있지만, Figma에서는 그림이라 Claude에게 요청해요.
 - Figma에서는 글자를 더블클릭 → `Shift + Enter`로 줄을 바꿔요. 코드와 같은 위치에서 바꿔 주세요.
 
-## 손그림 일러스트
-
-`src/assets/illust/` 에 있어요. 원본은 `재료.ai` 에서 그대로 벡터로 꺼냈어요.
-
-| 파일 | 위치 |
-|---|---|
-| `stage-lights.svg` | 히어로 제목 위 (무대 조명) |
-| `rope-line.svg` | "오늘 밤, 어떤 무대를 볼까요?" 아래 (관람 줄) |
-| `ordinary-artist.svg` | ORDINARY ARTIST 섹션 제목 (낙서 배너) |
-| `livevod.svg` | 아티스트 카드 LIVE / VOD 제목 (보라로 색 변경) |
-| `faq-wings.svg` | FAQ 제목 위 (물음표 날개) |
-| `night-stage.svg` | 엔딩 배경 (흰 선, 투명도 22%) |
-
-피그마에서는 Components 페이지 `Illust/` 아래에 원본이 있어요.
-
 ## 아티스트 소개서 링크 넣는 법
 
 `src/index.html` 에서 `data-deck` 이 붙은 링크 2곳의 `href="#"` 를 구글 드라이브 공유 링크로 바꿔요.
