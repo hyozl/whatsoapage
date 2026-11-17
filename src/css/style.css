@@ -913,13 +913,6 @@ body { color: var(--ink); letter-spacing: -0.01em; }
 /* 가격 슬라이더 끝: WOW */
 .price-tip b.en { font-family: "Ordinary Artist", "Noto Sans KR", sans-serif; font-weight: 400; letter-spacing: .04em; }
 
-/* 히어로 유튜브 */
-.stage-play { cursor: pointer; transition: transform .2s; z-index: 2; }
-.stage-play:hover { transform: scale(1.06); }
-.stage-video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 5; background: #000; }
-.stage-screen.is-playing > :not(.stage-video) { visibility: hidden; }
-.stage-yt-link { display: block; margin-top: 16px; text-align: center; font-size: 13px; color: var(--ink-3); text-decoration: underline; text-underline-offset: 3px; }
-@media (min-width:768px){ .stage-yt-link { position: absolute; left: 0; right: 0; bottom: -36px; margin: 0; } }
 
 /* 바로가기 (검은 원 + ↗) : 카드 오른쪽 아래 */
 .shortcut {
@@ -1043,3 +1036,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border: 2px s
   .track-q b, .track.is-open .track-q b { font-size: 15px; }
   .track-a p { font-size: 14px; }
 }
+
+/* 모니터 목업 주변 칸(상자) 없애기 */
+.devices, .curation .laptop { background: transparent !important; border: 0 !important; box-shadow: none !important; }
+.devices::before, .devices::after, .curation .laptop::before { display: none !important; }
