@@ -1004,3 +1004,42 @@ body { color: var(--ink); letter-spacing: -0.01em; }
   .faq-a p { font-size: 14px; }
   .tabs button { padding: 6px 14px; font-size: 14px; }
 }
+
+/* ---------- shadcn 2단계: 카드 · 배지 · 슬라이더 · 기능 아코디언 ---------- */
+/* 카드: 둥글기 12px + 1px 테두리 + 아주 옅은 그림자. 회색 카드는 흰 바탕으로 */
+.modes li, .playlist, .tile, .end-card, .you, .oa, .devices, .curation .laptop, .stage {
+  border-radius: 12px !important;
+}
+.modes li, .playlist, .tile-stmt, .oa, .devices, .curation .laptop {
+  background: #fff !important; border: 1px solid var(--sd-border) !important; box-shadow: 0 1px 2px rgba(15,23,42,.05);
+}
+.modes li.is-pay, .tile-live, .tile-price, .you, .end-card.is-aud { border: 1px solid var(--sd-border); box-shadow: 0 1px 2px rgba(15,23,42,.05); }
+.pl-item { border-radius: 8px !important; }
+
+/* 배지: 둥글기 6px, 작은 글씨 */
+.chip-live, .chip-dim, .ec-next, .timeline .badge { border-radius: var(--sd-radius) !important; }
+.chip-live, .chip-dim { padding: 3px 8px; font-size: 12px; font-weight: 600; }
+
+/* 슬라이더: 트랙 8px 회색, 손잡이 20px 흰 원 + 보라 테두리 2px */
+input[type="range"] { height: 8px; border-radius: 999px; background: linear-gradient(90deg, var(--primary) var(--p, 14%), var(--sd-muted) var(--p, 14%)); }
+input[type="range"]::-webkit-slider-thumb { width: 20px; height: 20px; border: 2px solid var(--primary); box-shadow: 0 1px 2px rgba(15,23,42,.1); }
+input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border: 2px solid var(--primary); }
+.price-tip { border-radius: 8px; }
+
+/* 기능 목록: FAQ와 같은 shadcn 아코디언 */
+.tracklist { gap: 0 !important; }
+.track, .track.is-open { background: transparent !important; border: 0 !important; border-radius: 0 !important; border-bottom: 1px solid var(--sd-border) !important; box-shadow: none !important; }
+.track-q { padding: 18px 0 !important; gap: 12px; }
+.track-q b, .track.is-open .track-q b { font-size: 17px; font-weight: 500; color: var(--ink) !important; flex: 1; }
+.track-q:hover b { text-decoration: underline; text-underline-offset: 3px; }
+.track-q .pm { width: 16px; height: 16px; flex: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center / 16px no-repeat; transition: transform .2s; }
+.track-q .pm::before, .track-q .pm::after { content: none !important; }
+.track.is-open .track-q .pm { transform: rotate(180deg); }
+.track-a { padding: 0 !important; }
+.track.is-open .track-a { padding-bottom: 18px !important; }
+.track-a p { font-size: 15px; color: var(--g700); }
+@media (max-width:767px){
+  .track-q { padding: 16px 0 !important; }
+  .track-q b, .track.is-open .track-q b { font-size: 15px; }
+  .track-a p { font-size: 14px; }
+}
