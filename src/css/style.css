@@ -1375,3 +1375,6 @@ body { color: var(--ink); }
   .steps .step.is-active { opacity: 1; visibility: visible; transition: opacity .6s ease, visibility 0s !important; }
 }
 @media (max-width:767px){ .steps .step { text-align: center; } }
+.faq-link { display: inline-block; margin-top: 10px; font-size: 14px; color: var(--brand-color); text-decoration: none; }
+.faq-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.faq-q, .track-q { align-items: center !important; } .faq-q .pm, .track-q .pm { align-self: center !important; display: flex; align-items: center; }
