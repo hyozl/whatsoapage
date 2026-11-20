@@ -95,7 +95,7 @@
     else onView(stage, (vis) => { clearInterval(timer); if (vis) timer = setInterval(step, 1000); });
   }
 
-  /* ---------- 02 스텝 플레이어: 단계를 누르면 그 단계로 넘어가요 (자동 재생 없음) ---------- */
+  /* ---------- 02 스텝 플레이어: 3초마다 자동으로 넘어가고, 누르면 그 단계로 (진행바 채움 없음) ---------- */
   const player = $('[data-step-player]');
   if (player) {
     const steps = $$('.step', player);
@@ -124,20 +124,30 @@
       swap(pc, steps[idx].dataset.pc);
       swap(mo, steps[idx].dataset.mo);
     };
+    const STEP_MS = 3000;
+    let timer, visible = false, paused = false;
+    const run = () => {
+      clearInterval(timer);
+      if (visible && !paused && !REDUCE) timer = setInterval(() => show(idx + 1), STEP_MS);
+    };
+    const go = (n) => { show(n); run(); };
+    player.addEventListener('mouseenter', () => { paused = true; run(); });
+    player.addEventListener('mouseleave', () => { paused = false; run(); });
+    onView(player, (vis) => { visible = vis; run(); });
     steps.forEach((s, n) => {
       s.tabIndex = 0;
       s.setAttribute('role', 'button');
-      s.addEventListener('click', () => show(n));
-      s.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(n); } });
+      s.addEventListener('click', () => go(n));
+      s.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(n); } });
     });
-    tabs.forEach((t) => t.addEventListener('click', () => show(+t.dataset.stepGo)));
+    tabs.forEach((t) => t.addEventListener('click', () => go(+t.dataset.stepGo)));
     // 모바일: 좌우로 밀어서 단계 이동
     let x0 = null;
     player.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
     player.addEventListener('touchend', (e) => {
       if (x0 === null) return;
       const dx = e.changedTouches[0].clientX - x0;
-      if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1));
+      if (Math.abs(dx) > 40) go(idx + (dx < 0 ? 1 : -1));
       x0 = null;
     });
   }
