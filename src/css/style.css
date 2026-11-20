@@ -1219,3 +1219,11 @@ body { color: var(--ink); }
 .playlist { display: flex !important; flex-direction: column; align-content: flex-start; } .playlist .pl-list { flex: none; }
 /* 관객/아티스트 탭: 헤더에 붙지 않고 제자리에 */
 .role-tabs { position: static !important; top: auto !important; background: transparent !important; -webkit-backdrop-filter: none; backdrop-filter: none; border-bottom: 0 !important; box-shadow: none !important; padding: 8px 0 0 !important; }
+/* 버튼 기본 흰색 → 누르거나 마우스 올리면 보라 */
+.btn-white:active, .btn-line:active, .role-tab:active { border-image: url("../assets/ui/btn-purple.svg") 16 26 fill / 18px 28px stretch !important; color: #fff !important; }
+/* 오뗌 재생목록: 검은 화살표 대신, 마우스를 올리면 보라 화살표 */
+.playlist { padding-bottom: 22px !important; }
+.pl-item { position: relative; padding-right: 64px; }
+.pl-item::after { content: "\e90b"; font-family: "OrdinaryArtist-ico"; position: absolute; right: 14px; top: 50%; translate: -8px -50%; font-size: 48px; line-height: 1; color: var(--brand-color); opacity: 0; transition: opacity .2s ease, translate .2s ease; pointer-events: none; }
+.pl-item:hover::after, .pl-item:focus-visible::after { opacity: 1; translate: 0 -50%; }
+@media (max-width:767px){ .pl-item { padding-right: 48px; } .pl-item::after { font-size: 32px; right: 8px; } .playlist { padding-bottom: 14px !important; } }
