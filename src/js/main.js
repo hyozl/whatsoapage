@@ -106,13 +106,13 @@
     steps.forEach((s) => { [s.dataset.pc, s.dataset.mo].forEach((src) => { if (src) new Image().src = src; }); });
     const swap = (img, src) => {
       if (!img || !src || img.getAttribute('src') === src) return;
-      img.style.opacity = 0;
+      img.style.opacity = 0;   // 디졸브: 천천히 사라졌다가
       setTimeout(() => {
         const test = new Image();
         test.onload = () => { img.classList.remove('is-missing'); img.src = src; img.style.opacity = ''; };
         test.onerror = () => { img.classList.add('is-missing'); img.src = src; img.style.opacity = ''; };
         test.src = src;
-      }, 200);
+      }, 450);
     };
     const show = (i) => {
       idx = (i + steps.length) % steps.length;

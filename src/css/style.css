@@ -1362,3 +1362,16 @@ body { color: var(--ink); }
 .price-labels .en { font-family: "Ordinary Artist", "Noto Sans KR", sans-serif; color: var(--brand-color); font-size: 18px; }
 .price-tip b { font-family: "Noto Sans KR", sans-serif !important; font-weight: 600; letter-spacing: 0; }
 .price-labels .wow-max { color: var(--brand-color); font-weight: 600; }
+/* 02 관람 단계: 디졸브 */
+#how { background: #fff !important; }
+[data-step-img] { transition: opacity .45s ease !important; }
+.step { transition: opacity .6s ease !important; }
+@media (max-width:767px){
+  /* 한 단계씩 보일 때도 겹쳐 놓고 서서히 바뀌게 */
+  .steps { display: grid !important; }
+  .steps .step, .steps .step:not(.is-active) { grid-area: 1 / 1; display: block !important; height: auto !important; opacity: 0; visibility: hidden; transition: opacity .6s ease, visibility 0s linear .6s !important; }
+  .steps .step > *, .steps .step:not(.is-active) > :not(.step-bar) { display: block !important; }
+  .steps .step .step-bar { display: none !important; }
+  .steps .step.is-active { opacity: 1; visibility: visible; transition: opacity .6s ease, visibility 0s !important; }
+}
+@media (max-width:767px){ .steps .step { text-align: center; } }
