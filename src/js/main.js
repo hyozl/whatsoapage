@@ -298,6 +298,10 @@
     });
   });
   if (/forArtist|artist|weeks|features|support/i.test(location.hash)) setRole('artist', false);
+  window.addEventListener('hashchange', () => {
+    if (/forArtist/i.test(location.hash)) setRole('artist', true);
+    else if (/forAudience/i.test(location.hash)) setRole('audience', true);
+  });
 
   /* ---------- 스크롤에 따라 채워지는 것들 ---------- */
   const dividers = $$('.chapter-divider');

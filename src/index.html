@@ -70,8 +70,8 @@
     <!-- 관객 / 아티스트 탭 (오아라이브 /whatsoa 와 같은 구성) -->
     <nav class="role-tabs" id="roles" aria-label="관객 / 아티스트">
       <div class="role-tabs-inner" role="tablist">
-        <button class="role-tab is-on" role="tab" id="tab-audience" aria-controls="panel-audience" aria-selected="true" data-role-tab="audience"><span>오아라이브 관객</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M6 14l6 6 6-6"/></svg></button>
-        <button class="role-tab" role="tab" id="tab-artist" aria-controls="panel-artist" aria-selected="false" data-role-tab="artist"><span>오디너리 아티스트</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M6 14l6 6 6-6"/></svg></button>
+        <button class="role-tab is-on" role="tab" id="tab-audience" aria-controls="panel-audience" aria-selected="true" data-role-tab="audience"><span>관객으로 둘러보기</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M6 14l6 6 6-6"/></svg></button>
+        <button class="role-tab" role="tab" id="tab-artist" aria-controls="panel-artist" aria-selected="false" data-role-tab="artist"><span>아티스트로 참여하기</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M6 14l6 6 6-6"/></svg></button>
       </div>
     </nav>
 
@@ -199,6 +199,26 @@
     </section>
 
 
+    <!-- ===== 10 FAQ · 관객 ===== -->
+    <section class="sec" id="faq">
+      <div class="container narrow">
+        <header class="sec-head">
+          <p class="sec-title">자주 묻는 질문</p>
+          <p class="sec-desc">더 궁금한 점은 고객센터에서 확인하세요</p>
+        </header>
+        <!-- 출처: 오아라이브 고객센터 유저·아티스트 FAQ (2026.11.05 기준, 요약). TODO: 나머지 답변 입력 -->
+        <ul class="faq" data-panel="aud" data-accordion>
+          <li class="is-open"><button class="faq-q" aria-expanded="true"><i>Q</i><b>작품을 서비스하는 방식이 궁금해요</b><span class="pm"></span></button>
+            <div class="faq-a"><p>LIVE(공연 영상 녹화 중계를 실시간으로 스트리밍)와 VOD(재생 가능 기간 동안 원하는 만큼 보는 대여)<br class="pc" /> 두 가지 방식이에요<br />회원이라면 누구나 볼 수 있는 무료 VOD도 있어요</p></div></li>
+          <li><button class="faq-q" aria-expanded="false"><i>Q</i><b>아티스트가 설정한 가격보다 더 지불할 수 있나요?</b><span class="pm"></span></button><div class="faq-a"><p>자세한 내용은 고객센터에서 확인할 수 있어요</p></div></li>
+          <li><button class="faq-q" aria-expanded="false"><i>Q</i><b>후원이 무엇인가요?</b><span class="pm"></span></button><div class="faq-a"><p>자세한 내용은 고객센터에서 확인할 수 있어요</p></div></li>
+          <li><button class="faq-q" aria-expanded="false"><i>Q</i><b>WoW는 어떻게 구매하나요?</b><span class="pm"></span></button><div class="faq-a"><p>자세한 내용은 고객센터에서 확인할 수 있어요</p></div></li>
+          <li><button class="faq-q" aria-expanded="false"><i>Q</i><b>한 아이디로 동시에 여러 기기를 이용하여 관람할 수 있나요?</b><span class="pm"></span></button><div class="faq-a"><p>자세한 내용은 고객센터에서 확인할 수 있어요</p></div></li>
+        </ul>
+        <p class="faq-more"><a href="https://oalive.kr">고객센터에서 더 보기 →</a></p>
+      </div>
+    </section>
+
     </div>
 
     <div class="role-panel" id="panel-artist" role="tabpanel" aria-labelledby="tab-artist" data-role-panel="artist" hidden>
@@ -303,7 +323,7 @@
             <a class="btn btn-primary btn-deck" href="#" data-deck target="_blank" rel="noopener">아티스트 소개서 보기 <i class="oa-ico ico-link" aria-hidden="true">&#xe90b;</i></a>
             <a class="btn btn-line" href="https://oalive.kr">등록 문의하기</a>
           </div>
-          <a class="text-link" href="#faq" data-faq-tab="artist">아티스트 FAQ 보기 →</a>
+          <a class="text-link" href="#faq-artist">아티스트 FAQ 보기 →</a>
         </div>
         <ol class="timeline">
           <li><span class="en-label">WEEK 1</span><b>아티스트·작품 등록</b><p>회원가입 후 아티스트 회원으로 등록해요</p></li>
@@ -317,29 +337,15 @@
     </section>
 
 
-    </div>
-
-    <!-- ===== 10 FAQ ===== -->
-    <section class="sec" id="faq">
+    <!-- ===== 10 FAQ · 아티스트 ===== -->
+    <section class="sec" id="faq-artist">
       <div class="container narrow">
         <header class="sec-head">
           <p class="sec-title">자주 묻는 질문</p>
           <p class="sec-desc">더 궁금한 점은 고객센터에서 확인하세요</p>
         </header>
-        <div class="tabs" role="tablist">
-          <button role="tab" class="is-on" aria-selected="true" data-tab="aud">관객</button>
-          <button role="tab" aria-selected="false" data-tab="artist">아티스트</button>
-        </div>
         <!-- 출처: 오아라이브 고객센터 유저·아티스트 FAQ (2026.11.05 기준, 요약). TODO: 나머지 답변 입력 -->
-        <ul class="faq" data-panel="aud" data-accordion>
-          <li class="is-open"><button class="faq-q" aria-expanded="true"><i>Q</i><b>작품을 서비스하는 방식이 궁금해요</b><span class="pm"></span></button>
-            <div class="faq-a"><p>LIVE(공연 영상 녹화 중계를 실시간으로 스트리밍)와 VOD(재생 가능 기간 동안 원하는 만큼 보는 대여)<br class="pc" /> 두 가지 방식이에요<br />회원이라면 누구나 볼 수 있는 무료 VOD도 있어요</p></div></li>
-          <li><button class="faq-q" aria-expanded="false"><i>Q</i><b>아티스트가 설정한 가격보다 더 지불할 수 있나요?</b><span class="pm"></span></button><div class="faq-a"><p>자세한 내용은 고객센터에서 확인할 수 있어요</p></div></li>
-          <li><button class="faq-q" aria-expanded="false"><i>Q</i><b>후원이 무엇인가요?</b><span class="pm"></span></button><div class="faq-a"><p>자세한 내용은 고객센터에서 확인할 수 있어요</p></div></li>
-          <li><button class="faq-q" aria-expanded="false"><i>Q</i><b>WoW는 어떻게 구매하나요?</b><span class="pm"></span></button><div class="faq-a"><p>자세한 내용은 고객센터에서 확인할 수 있어요</p></div></li>
-          <li><button class="faq-q" aria-expanded="false"><i>Q</i><b>한 아이디로 동시에 여러 기기를 이용하여 관람할 수 있나요?</b><span class="pm"></span></button><div class="faq-a"><p>자세한 내용은 고객센터에서 확인할 수 있어요</p></div></li>
-        </ul>
-        <ul class="faq" data-panel="artist" data-accordion hidden>
+        <ul class="faq" data-panel="artist" data-accordion>
           <li class="is-open"><button class="faq-q" aria-expanded="true"><i>Q</i><b>아티스트로 등록하고 싶어요</b><span class="pm"></span></button>
             <div class="faq-a"><p>따로 신청하지 않아도 작품을 등록하면 자동으로 아티스트 회원이 돼요<br />작품을 등록할 때 추가한 구성원도 함께 아티스트 회원이 돼요</p></div></li>
           <li><button class="faq-q" aria-expanded="false"><i>Q</i><b>오아라이브의 작품 심사 과정이 있나요?</b><span class="pm"></span></button><div class="faq-a"><p>자세한 내용은 고객센터에서 확인할 수 있어요</p></div></li>
@@ -350,6 +356,8 @@
         <p class="faq-more"><a href="https://oalive.kr">고객센터에서 더 보기 →</a></p>
       </div>
     </section>
+    </div>
+
 
     <!-- ===== 11 엔딩 ===== -->
     <section class="sec ending">

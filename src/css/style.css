@@ -1170,3 +1170,9 @@ body { color: var(--ink); }
 .btn-deck { gap: 4px; }
 @media (max-width:767px){ .tile-stmt .deck-btn { right: 16px; bottom: 16px; left: 16px; width: auto; } }
 .btn { justify-content: center !important; }
+
+/* FAQ 아티스트 (관객 FAQ와 같은 레이아웃) */
+@media (min-width: 768px){#features .container, #faq-artist .container{
+    display: grid; grid-template-columns: 400px minmax(0, 1fr); column-gap: 96px; align-items: start;
+  } #features .sec-head, #faq-artist .sec-head{ grid-column: 1; grid-row: 1; margin-bottom: 0; } #faq-artist .container{ grid-template-rows: auto auto 1fr; } #faq-artist .tabs{ grid-column: 1; grid-row: 2; margin: 32px 0 0; } #faq-artist .faq-more{ grid-column: 1; grid-row: 3; margin-top: 32px; align-self: start; } #faq-artist .faq{ grid-column: 2; grid-row: 1 / span 3; max-width: none; }}
+@media (min-width:768px){ #faq .container, #faq-artist .container { grid-template-rows: auto 1fr; } #faq .faq-more, #faq-artist .faq-more { grid-row: 2; } #faq .faq, #faq-artist .faq { grid-row: 1 / span 2; } }
