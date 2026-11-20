@@ -162,18 +162,19 @@
       const p = ((range.value - range.min) / (range.max - range.min)) * 100;
       range.parentElement.style.setProperty('--p', p + '%');
       range.style.setProperty('--p', p + '%');
-      const isMax = Number(range.value) >= Number(range.max);
-      // 끝까지 밀면 금액 대신 WOW 글자로
-      tip.textContent = isMax ? 'WOW' : '₩ ' + Number(range.value).toLocaleString('ko-KR');
-      tip.classList.toggle('en', isMax);
-      tipBox.classList.toggle('is-wow', isMax);
-      if (tipLabel) tipLabel.textContent = isMax ? '원하는 만큼' : '내가 정한 금액';
-      range.setAttribute('aria-valuetext', Number(range.value).toLocaleString('ko-KR') + '원');
+      // 금액 대신 WoW의 o 개수로 (1개 ~ 최대 8개)
+      const n = Math.max(1, Math.min(8, Math.round(Number(range.value))));
+      tip.textContent = 'W' + 'o'.repeat(n) + 'W';
+      tipBox.classList.toggle('is-wow', n === 8);
+      range.setAttribute('aria-valuetext', tip.textContent);
+      // 말풍선이 양 끝에서 잘리지 않게
+      const half = tipBox.offsetWidth / 2 + 4, wrapW = range.parentElement.offsetWidth;
+      tipBox.style.left = Math.min(Math.max(half, wrapW * p / 100), wrapW - half) + 'px';
       if (bump) { tipBox.classList.remove('bump'); void tipBox.offsetWidth; tipBox.classList.add('bump'); }
     };
     range.addEventListener('input', () => update(true));
     update(false);
-    // 화면에 처음 들어오면 1,000 → 5,000 으로 스르륵 움직여 "끌 수 있다"는 걸 보여줌
+    // 화면에 처음 들어오면 WoW → WooooW 로 스르륵 움직여 "끌 수 있다"는 걸 보여줌
     if (!REDUCE) {
       const io = onView(range, (vis) => {
         if (!vis) return;
@@ -183,7 +184,7 @@
         const tick = (t) => {
           const k = Math.min((t - t0) / dur, 1);
           const v = from + (to - from) * (1 - Math.pow(1 - k, 3));
-          range.value = Math.round(v / 1000) * 1000;
+          range.value = Math.round(v);
           update(false);
           if (k < 1) requestAnimationFrame(tick); else { range.value = to; update(true); }
         };

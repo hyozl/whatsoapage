@@ -1357,3 +1357,8 @@ body { color: var(--ink); }
   .sc-card p { font-size: 12px; margin-top: 4px; line-height: 1.5; }
   .sc-img { min-height: 48px; margin-top: 10px; border-radius: 12px; }
 }
+/* WoW 슬라이더: 금액 대신 o 개수 */
+.price-tip b.en { font-family: "Ordinary Artist", "Noto Sans KR", sans-serif; font-weight: 400; letter-spacing: .02em; white-space: nowrap; }
+.price-labels .en { font-family: "Ordinary Artist", "Noto Sans KR", sans-serif; color: var(--brand-color); font-size: 18px; }
+.price-tip b { font-family: "Noto Sans KR", sans-serif !important; font-weight: 600; letter-spacing: 0; }
+.price-labels .wow-max { color: var(--brand-color); font-weight: 600; }
