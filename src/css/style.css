@@ -1318,3 +1318,21 @@ body { color: var(--ink); }
   .sc-stmt p { font-size: 15px; }
   .sc-stmt .btn { width: 100%; }
 }
+/* 아티스트 카드 정리: 높이를 서로 다르게, 가운데 기준 엇갈림 */
+.showcase { align-items: center !important; }
+.sc-card, .sc-card:nth-child(odd) { margin-top: 0 !important; padding-bottom: 24px; }
+.sc-live { height: 470px; } .sc-price { height: 530px; } .sc-ticket { height: 450px; }
+.sc-top { height: 160px; }
+.sc-top + .sc-icon { margin-top: -34px; }
+.sc-card h3.en { margin-top: 14px; font-size: 40px; }
+.sc-card p { margin-top: 10px; }
+.sc-img { height: auto; flex: 1 1 auto; min-height: 90px; margin-top: 20px; }
+@media (max-width:1180px) and (min-width:768px){ .sc-card { width: 300px; } }
+@media (max-width:767px){
+  .showcase { align-items: center !important; }
+  .sc-live { height: 400px; } .sc-price { height: 440px; } .sc-ticket { height: 380px; }
+  .sc-top { height: 130px; }
+  .sc-card { padding-bottom: 18px; }
+  .sc-card h3.en { font-size: 30px; }
+  .sc-img { min-height: 70px; margin-top: 14px; }
+}
