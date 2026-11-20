@@ -249,28 +249,35 @@
           <h2 class="en-title">ORDINARY ARTIST</h2>
           <p class="sec-title">오아라이브와 함께할<br class="mo" /> 아티스트를 찾아요</p>
         </header>
-        <div class="bento">
-          <div class="tile tile-live">
-            <span class="tile-sym play"><i class="oa-ico" aria-hidden="true">&#xe901;</i></span>
-            <h3 class="en">LIVE / VOD</h3>
-            <p>녹화 중계 LIVE와 VOD로, 언제 어디서나 더 많은 관객을 만나요</p>
-          </div>
-          <div class="tile tile-price">
-            <span class="tile-sym won">₩</span>
-            <h3 class="en">MY PRICE</h3>
-            <p>작품의 티켓 가격을 직접 정해요<br />어렵다면 오아라이브가 함께 정해요</p>
-          </div>
-          <div class="tile tile-wow">
-            <span class="tile-sym heart"><i class="oa-ico" aria-hidden="true">&#xe949;</i></span>
-            <h3 class="en">TICKET + WOW</h3>
-            <p>관객이 보낸 WoW는 티켓 수익과 함께 계산해 정산해드려요</p>
-          </div>
-          <div class="tile tile-stmt">
-            <h3>세상의 모든 평범한<br /> 아티스트에게 더 넓은 무대를</h3>
-            <p>내 작품을 온라인 무대에 올려보세요<br />오아라이브가 함께 준비해요</p>
-            <!-- TODO: 아티스트 소개서 구글 드라이브 링크로 교체 (이 파일에서 data-deck 이 붙은 링크 2곳) -->
-            <a class="btn btn-primary btn-deck deck-btn" href="#" data-deck target="_blank" rel="noopener">아티스트 소개서 보기 <i class="oa-ico ico-link" aria-hidden="true">&#xe90b;</i></a>
-          </div>
+        <!-- 아티스트 카드 3장 (이미지: src/assets/img/artist-*.png 넣으면 자동 표시) -->
+        <ul class="showcase">
+            <li class="sc-card sc-live">
+              <span class="sc-top"><img src="assets/img/artist-live-top.png" alt="" loading="lazy" onerror="this.remove()" /></span>
+              <span class="sc-icon"><i class="oa-ico" aria-hidden="true">&#xe901;</i></span>
+              <h3 class="en">LIVE / VOD</h3>
+              <p>녹화 중계 LIVE와 VOD로<br />언제 어디서나 더 많은 관객을 만나요</p>
+              <span class="sc-img"><img src="assets/img/artist-live.png" alt="" loading="lazy" onerror="this.remove()" /></span>
+            </li>
+            <li class="sc-card sc-price">
+              
+              <span class="sc-icon">₩</span>
+              <h3 class="en">MY PRICE</h3>
+              <p>작품의 티켓 가격을 직접 정해요<br />어렵다면 오아라이브가 함께 정해요</p>
+              <span class="sc-img"><img src="assets/img/artist-price.png" alt="" loading="lazy" onerror="this.remove()" /></span>
+            </li>
+            <li class="sc-card sc-ticket">
+              <span class="sc-top"><img src="assets/img/artist-ticket-top.png" alt="" loading="lazy" onerror="this.remove()" /></span>
+              <span class="sc-icon"><i class="oa-ico" aria-hidden="true">&#xe949;</i></span>
+              <h3 class="en">TICKET + WOW</h3>
+              <p>관객이 보낸 WoW는<br />티켓 수익과 함께 정산해 드려요</p>
+              <span class="sc-img"><img src="assets/img/artist-ticket.png" alt="" loading="lazy" onerror="this.remove()" /></span>
+            </li>
+        </ul>
+        <div class="sc-stmt">
+          <h3>세상의 모든 평범한 아티스트에게<br /> 더 넓은 무대를</h3>
+          <p>내 작품을 온라인 무대에 올려보세요<br />오아라이브가 함께 준비해요</p>
+          <!-- TODO: 아티스트 소개서 구글 드라이브 링크로 교체 (이 파일에서 data-deck 이 붙은 링크 2곳) -->
+          <a class="btn btn-primary btn-deck" href="#" data-deck target="_blank" rel="noopener">아티스트 소개서 보기 <i class="oa-ico ico-link" aria-hidden="true">&#xe90b;</i></a>
         </div>
       </div>
     </section>
