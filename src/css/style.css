@@ -1140,3 +1140,21 @@ body { color: var(--ink); }
 .btn[disabled], .btn.is-disabled { border-image: url("../assets/ui/btn-gray.svg") 16 26 fill / 18px 28px stretch !important; }
 .tabs button, .tabs button.is-on { border-image-width: 15px 22px !important; }
 @media (max-width:767px){ .hero-choice { margin-top: 16px !important; position: static !important; translate: none !important; transform: none !important; } }
+
+/* ---------- 관객 / 아티스트 탭 (오아라이브 /whatsoa 구성) ---------- */
+.role-tabs { position: sticky; top: var(--hdr, 75px); z-index: 40; background: var(--brand-color); padding-top: 8px; }
+.role-tabs-inner { display: flex; width: min(1200px, 100% - 40px); margin: 0 auto; }
+.role-tab { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; height: 56px; border: 0; background: transparent; color: #fff; font-size: 18px; font-weight: 400; cursor: pointer; border-radius: 20px 20px 0 0; transition: background-color .2s, color .2s; }
+.role-tab svg { width: 18px; height: 18px; }
+.role-tab:hover { background: rgba(255,255,255,.12); }
+.role-tab.is-on { background: #fff; color: var(--brand-color); font-weight: 600; }
+.role-tab.is-on svg { display: none; }
+.role-panel[hidden] { display: none !important; }
+.role-panel > .sec:first-child { padding-top: 96px; }
+@media (max-width:767px){
+  .role-tabs { padding-top: 6px; }
+  .role-tabs-inner { width: 100%; }
+  .role-tab { height: 46px; font-size: 15px; border-radius: 14px 14px 0 0; }
+  .role-tab svg { width: 15px; height: 15px; }
+  .role-panel > .sec:first-child { padding-top: 56px; }
+}

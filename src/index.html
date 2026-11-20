@@ -63,14 +63,23 @@
             </div>
           </div>
           <div class="hero-choice">
-            <a class="btn btn-primary" href="https://oalive.kr">관객으로 둘러보기</a>
-            <a class="btn btn-ghost" href="#artist">아티스트로 참여하기</a>
+            <a class="btn btn-primary" href="#forAudience" data-role-go="audience">관객으로 둘러보기</a>
+            <a class="btn btn-ghost" href="#forArtist" data-role-go="artist">아티스트로 참여하기</a>
           </div>
         </div>
 
       </div>
     </section>
 
+    <!-- 관객 / 아티스트 탭 (오아라이브 /whatsoa 와 같은 구성) -->
+    <nav class="role-tabs" id="roles" aria-label="관객 / 아티스트">
+      <div class="role-tabs-inner" role="tablist">
+        <button class="role-tab is-on" role="tab" id="tab-audience" aria-controls="panel-audience" aria-selected="true" data-role-tab="audience"><span>오아라이브 관객</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M6 14l6 6 6-6"/></svg></button>
+        <button class="role-tab" role="tab" id="tab-artist" aria-controls="panel-artist" aria-selected="false" data-role-tab="artist"><span>오디너리 아티스트</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M6 14l6 6 6-6"/></svg></button>
+      </div>
+    </nav>
+
+    <div class="role-panel" id="panel-audience" role="tabpanel" aria-labelledby="tab-audience" data-role-panel="audience">
     <!-- ===== 02 HOW TO WATCH ===== -->
     <section class="sec sec-off" id="how">
       <div class="container">
@@ -194,6 +203,9 @@
     </section>
 
 
+    </div>
+
+    <div class="role-panel" id="panel-artist" role="tabpanel" aria-labelledby="tab-artist" data-role-panel="artist" hidden>
     <!-- ===== 06 ORDINARY ARTIST ===== -->
     <section class="sec" id="artist">
       <div class="container">
@@ -308,6 +320,8 @@
       </div>
     </section>
 
+
+    </div>
 
     <!-- ===== 10 FAQ ===== -->
     <section class="sec" id="faq">

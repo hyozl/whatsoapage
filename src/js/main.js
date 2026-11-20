@@ -258,6 +258,47 @@
   tabs.forEach((t) => t.addEventListener('click', () => selectTab(t.dataset.tab)));
   $$('[data-faq-tab]').forEach((a) => a.addEventListener('click', () => selectTab(a.dataset.faqTab)));
 
+  /* ---------- 관객 / 아티스트 탭: 고른 쪽 내용만 보여줘요 ---------- */
+  const roleTabs = $$('[data-role-tab]');
+  const rolePanels = $$('[data-role-panel]');
+  const roleBar = $('.role-tabs');
+  const headerEl = $('.site-header');
+  const setHeaderVar = () => document.documentElement.style.setProperty('--hdr', (headerEl ? headerEl.offsetHeight : 0) + 'px');
+  setHeaderVar(); window.addEventListener('resize', setHeaderVar);
+  const setRole = (role, scroll) => {
+    roleTabs.forEach((t) => {
+      const on = t.dataset.roleTab === role;
+      t.classList.toggle('is-on', on);
+      t.setAttribute('aria-selected', on);
+    });
+    rolePanels.forEach((p) => {
+      p.hidden = p.dataset.rolePanel !== role;
+      if (!p.hidden) $$('.reveal', p).forEach((el) => el.classList.add('is-in'));
+    });
+    selectTab(role === 'artist' ? 'artist' : 'aud');   // FAQ 탭도 같이
+    history.replaceState(null, '', role === 'artist' ? '#forArtist' : '#forAudience');
+    if (scroll && roleBar) {
+      const top = roleBar.getBoundingClientRect().top + window.scrollY - (headerEl ? headerEl.offsetHeight : 0);
+      window.scrollTo({ top, behavior: REDUCE ? 'auto' : 'smooth' });
+    }
+  };
+  roleTabs.forEach((t) => t.addEventListener('click', () => setRole(t.dataset.roleTab, true)));
+  $$('[data-role-go]').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); setRole(a.dataset.roleGo, true); }));
+  // 숨겨진 쪽 섹션으로 가는 링크(#artist 등)를 누르면 탭부터 바꿔요
+  $$('a[href^="#"]').forEach((a) => {
+    const id = a.getAttribute('href').slice(1);
+    const target = id && document.getElementById(id);
+    const panel = target && target.closest('[data-role-panel]');
+    if (!panel) return;
+    a.addEventListener('click', (e) => {
+      if (!panel.hidden) return;
+      e.preventDefault();
+      setRole(panel.dataset.rolePanel, false);
+      requestAnimationFrame(() => target.scrollIntoView({ behavior: REDUCE ? 'auto' : 'smooth' }));
+    });
+  });
+  if (/forArtist|artist|weeks|features|support/i.test(location.hash)) setRole('artist', false);
+
   /* ---------- 스크롤에 따라 채워지는 것들 ---------- */
   const dividers = $$('.chapter-divider');
   const timeline = $('.timeline');
