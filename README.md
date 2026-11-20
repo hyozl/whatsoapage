@@ -168,6 +168,21 @@ Figma **`자료 · 캡처`** 페이지의 캡처를 PNG로 내보내 아래 이�
 - 보라색 영문 큰 제목(PAY AS YOU LIKE 등)은 웹에서는 글자라 바로 고칠 수 있지만, Figma에서는 그림이라 Claude에게 요청해요.
 - Figma에서는 글자를 더블클릭 → `Shift + Enter`로 줄을 바꿔요. 코드와 같은 위치에서 바꿔 주세요.
 
+## 05 오아라이브 카테고리 (이미지 넣는 법)
+
+"오늘 밤, 어떤 무대를 볼까요?" 섹션은 오아라이브 장르 6개 카드예요. 누르면 오아라이브의 해당 목록이 새 탭으로 열려요.
+
+| 카드 | 링크 | 이미지 파일 |
+|---|---|---|
+| 무료 작품 | /watch/free | `src/assets/img/cat-free.png` |
+| 뮤지컬 | /watch?genre=musical | `cat-musical.png` |
+| 연극 | /watch?genre=theater | `cat-theater.png` |
+| 무용 | /watch?genre=dance | `cat-dance.png` |
+| 음악 | /watch?genre=music | `cat-music.png` |
+| 인터뷰 | /watch?genre=interview | `cat-interview.png` |
+
+이미지를 위 이름으로 `src/assets/img/` 에 넣기만 하면 자동으로 보여요 (권장 비율 269:240, 가로 800px 이상). 없으면 회색 칸으로 보여요.
+
 ## 오뗌 극장 재생목록 (자동)
 
 04 섹션 재생목록은 페이지를 열 때마다 **오아라이브 API에서 열린 오뗌 테마 3개를 무작위로** 불러와요.
