@@ -1176,3 +1176,18 @@ body { color: var(--ink); }
     display: grid; grid-template-columns: 400px minmax(0, 1fr); column-gap: 96px; align-items: start;
   } #features .sec-head, #faq-artist .sec-head{ grid-column: 1; grid-row: 1; margin-bottom: 0; } #faq-artist .container{ grid-template-rows: auto auto 1fr; } #faq-artist .tabs{ grid-column: 1; grid-row: 2; margin: 32px 0 0; } #faq-artist .faq-more{ grid-column: 1; grid-row: 3; margin-top: 32px; align-self: start; } #faq-artist .faq{ grid-column: 2; grid-row: 1 / span 3; max-width: none; }}
 @media (min-width:768px){ #faq .container, #faq-artist .container { grid-template-rows: auto 1fr; } #faq .faq-more, #faq-artist .faq-more { grid-row: 2; } #faq .faq, #faq-artist .faq { grid-row: 1 / span 2; } }
+
+/* 관객 / 아티스트 탭 v2: 가운데 손그림 버튼 두 개 (선택 = 보라) */
+.role-tabs { background: rgba(255,255,255,.92) !important; -webkit-backdrop-filter: saturate(180%) blur(14px); backdrop-filter: saturate(180%) blur(14px);
+  padding: 14px 0 !important; border-bottom: 1px solid var(--brand-color-border-light); box-shadow: 0 6px 16px rgba(33,33,33,.06); }
+.role-tabs-inner { justify-content: center; gap: 12px; }
+.role-tab { flex: 0 0 220px; height: 52px; border-radius: 0 !important; background: none !important; color: var(--ink) !important; font-size: 16px; font-weight: 400 !important;
+  border: 0 solid transparent !important; border-image: url("../assets/ui/btn-white.svg") 16 26 fill / 18px 28px stretch !important; transition: transform .15s ease; }
+.role-tab:hover { transform: translateY(-2px); background: none !important; }
+.role-tab.is-on { color: #fff !important; border-image: url("../assets/ui/btn-purple.svg") 16 26 fill / 18px 28px stretch !important; }
+.role-tab:focus-visible { outline: 2px solid var(--brand-color); outline-offset: 3px; }
+@media (max-width:767px){
+  .role-tabs { padding: 10px 0 !important; }
+  .role-tabs-inner { width: calc(100% - 40px); gap: 8px; }
+  .role-tab { flex: 1 1 0; height: 46px; font-size: 15px; }
+}
