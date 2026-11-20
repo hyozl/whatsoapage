@@ -1343,3 +1343,17 @@ body { color: var(--ink); }
   .sc-live { height: 380px; } .sc-price { height: 420px; } .sc-ticket { height: 390px; }
   .sc-card:hover { transform: none; box-shadow: none; }
 }
+/* 아티스트 카드 모바일: 작게 */
+@media (max-width:767px){
+  .showcase { gap: 10px; margin-top: 24px !important; }
+  .sc-card { border-radius: 20px; padding: 0 16px 16px; }
+  .sc-live { height: 250px; } .sc-price { height: 280px; } .sc-ticket { height: 260px; }
+  .sc-price { padding-top: 24px; }
+  .sc-top { height: 84px; width: calc(100% + 32px); margin: 0 -16px; }
+  .sc-icon { width: 40px; height: 40px; border-radius: 12px; font-size: 17px; }
+  .sc-top + .sc-icon { margin-top: -20px; }
+  .sc-icon .oa-ico { font-size: 20px; }
+  .sc-card h3.en { font-size: 24px; margin-top: 8px; }
+  .sc-card p { font-size: 12px; margin-top: 4px; line-height: 1.5; }
+  .sc-img { min-height: 48px; margin-top: 10px; border-radius: 12px; }
+}
