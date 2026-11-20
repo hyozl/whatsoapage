@@ -1158,3 +1158,10 @@ body { color: var(--ink); }
   .role-tab svg { width: 15px; height: 15px; }
   .role-panel > .sec:first-child { padding-top: 56px; }
 }
+/* 히어로 버튼은 탭으로 합쳤어요 */
+.hero .stage-wrap, .hero-stage { margin-bottom: 0 !important; }
+.hero { padding-bottom: 64px !important; }
+.role-tab:focus { outline: none; }
+.role-tab:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
+.role-tab.is-on:focus-visible { outline-color: var(--brand-color); }
+@media (max-width:767px){ .hero { padding-bottom: 40px !important; } }
