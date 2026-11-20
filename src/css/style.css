@@ -1165,3 +1165,8 @@ body { color: var(--ink); }
 .role-tab:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
 .role-tab.is-on:focus-visible { outline-color: var(--brand-color); }
 @media (max-width:767px){ .hero { padding-bottom: 40px !important; } }
+/* 아티스트 소개서 버튼 강조 */
+.tile-stmt .deck-btn { position: absolute; right: 28px; bottom: 28px; }
+.btn-deck { gap: 4px; }
+@media (max-width:767px){ .tile-stmt .deck-btn { right: 16px; bottom: 16px; left: 16px; width: auto; } }
+.btn { justify-content: center !important; }
