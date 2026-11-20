@@ -182,21 +182,35 @@
     }
   }
 
-  /* ---------- 04 재생목록: 누르면 그 항목이 NOW PLAYING ---------- */
-  const playlist = $('.playlist');
-  if (playlist) {
-    const items = $$('.pl-item', playlist);
-    const eq = $('.eq', playlist);
-    items.forEach((it) => {
-      it.tabIndex = 0;
-      it.setAttribute('role', 'button');
-      const pick = () => {
-        items.forEach((x) => x.classList.toggle('is-now', x === it));
-        const thumb = $('.thumb', it);
-        if (eq && thumb && eq.parentElement !== thumb) thumb.appendChild(eq);
-      };
-      it.addEventListener('click', pick);
-      it.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
+  /* ---------- 04 재생목록: 오뗌 극장 테마 3개를 무작위로 불러와요 ---------- */
+  const themeList = $('[data-oatheme]');
+  if (themeList) {
+    const API = 'https://api.oalive.kr';
+    const esc = (t) => String(t || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    fetch(API + '/oatheme')
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((res) => {
+        const open = (res.data || []).filter((t) => t.isOpen);
+        for (let k = open.length - 1; k > 0; k--) { const r = Math.floor(Math.random() * (k + 1)); [open[k], open[r]] = [open[r], open[k]]; }
+        const pick = open.slice(0, 3);
+        if (!pick.length) return;
+        const eq = '<span class="eq"><i></i><i></i><i></i><i></i></span>';
+        themeList.innerHTML = pick.map((t, n) => {
+          const img = t.thumbnailPath ? API + '/files/image' + t.thumbnailPath : '';
+          const href = 'https://oalive.kr' + encodeURI(t.url || '/oatheme');
+          return '<a class="pl-item' + (n === 0 ? ' is-now' : '') + '" href="' + href + '" target="_blank" rel="noopener">' +
+            '<span class="thumb t' + (n + 1) + '"' + (img ? ' style="background-image:url(\'' + img + '\')"' : '') + '>' + (n === 0 ? eq : '') + '</span>' +
+            '<span class="pl-txt"><b>' + esc(t.title.trim()) + '</b><small>' + esc(t.titleEn) + '</small></span></a>';
+        }).join('');
+        $$('.pl-item', themeList).forEach((el) => el.classList.add('is-in'));
+      })
+      .catch(() => { /* 불러오기 실패: 기본값 유지 */ });
+    // 마우스를 올린 항목이 NOW PLAYING
+    themeList.addEventListener('mouseover', (e) => {
+      const it = e.target.closest('.pl-item'); if (!it) return;
+      $$('.pl-item', themeList).forEach((x) => x.classList.toggle('is-now', x === it));
+      const eqEl = $('.eq', themeList), th = $('.thumb', it);
+      if (eqEl && th && eqEl.parentElement !== th) th.appendChild(eqEl);
     });
   }
 
