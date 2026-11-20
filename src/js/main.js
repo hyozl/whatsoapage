@@ -95,19 +95,15 @@
     else onView(stage, (vis) => { clearInterval(timer); if (vis) timer = setInterval(step, 1000); });
   }
 
-  /* ---------- 02 스텝 플레이어: 2.5초마다 다음 단계, 화면 캡처도 함께 바뀜 ---------- */
+  /* ---------- 02 스텝 플레이어: 단계를 누르면 그 단계로 넘어가요 (자동 재생 없음) ---------- */
   const player = $('[data-step-player]');
   if (player) {
     const steps = $$('.step', player);
+    const tabs = $$('[data-step-go]', player);
     const pc = $('[data-step-img="pc"]', player);
     const mo = $('[data-step-img="mo"]', player);
-    const STEP_MS = 2500;
-    player.style.setProperty('--step-ms', STEP_MS + 'ms');
-    let idx = 0, timer, visible = false, paused = false;
-
-    // 다음 단계 이미지를 미리 불러오기
+    let idx = 0;
     steps.forEach((s) => { [s.dataset.pc, s.dataset.mo].forEach((src) => { if (src) new Image().src = src; }); });
-
     const swap = (img, src) => {
       if (!img || !src || img.getAttribute('src') === src) return;
       img.style.opacity = 0;
@@ -122,40 +118,28 @@
       idx = (i + steps.length) % steps.length;
       steps.forEach((s, n) => {
         s.classList.toggle('is-active', n === idx);
-        s.classList.toggle('done', n < idx);
         s.setAttribute('aria-current', n === idx ? 'step' : 'false');
-        const bar = $('.step-bar i', s);
-        bar.style.animation = 'none';
-        void bar.offsetWidth; // 진행바 애니메이션 다시 시작
-        bar.style.animation = '';
       });
+      tabs.forEach((t, n) => { t.classList.toggle('is-on', n === idx); t.setAttribute('aria-selected', n === idx); });
       swap(pc, steps[idx].dataset.pc);
       swap(mo, steps[idx].dataset.mo);
-    };
-    const run = () => {
-      clearInterval(timer);
-      if (visible && !paused && !REDUCE) timer = setInterval(() => show(idx + 1), STEP_MS);
     };
     steps.forEach((s, n) => {
       s.tabIndex = 0;
       s.setAttribute('role', 'button');
-      const go = () => { show(n); run(); };
-      s.addEventListener('click', go);
-      s.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+      s.addEventListener('click', () => show(n));
+      s.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(n); } });
     });
-    // 마우스를 올리면 잠시 멈춤
-    player.addEventListener('mouseenter', () => { paused = true; player.classList.add('is-paused'); run(); });
-    player.addEventListener('mouseleave', () => { paused = false; player.classList.remove('is-paused'); show(idx); run(); });
+    tabs.forEach((t) => t.addEventListener('click', () => show(+t.dataset.stepGo)));
     // 모바일: 좌우로 밀어서 단계 이동
     let x0 = null;
     player.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
     player.addEventListener('touchend', (e) => {
       if (x0 === null) return;
       const dx = e.changedTouches[0].clientX - x0;
-      if (Math.abs(dx) > 40) { show(idx + (dx < 0 ? 1 : -1)); run(); }
+      if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1));
       x0 = null;
     });
-    onView(player, (vis) => { visible = vis; run(); });
   }
 
   /* ---------- 03 가격 슬라이더 (설명용 예시) ---------- */

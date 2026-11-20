@@ -1191,3 +1191,19 @@ body { color: var(--ink); }
   .role-tabs-inner { width: calc(100% - 40px); gap: 8px; }
   .role-tab { flex: 1 1 0; height: 46px; font-size: 15px; }
 }
+
+/* 02 스텝: 누르면 넘어가요 (차오르는 진행바 없음) */
+.step-tabs { display: none; }
+.step .step-bar i, .step.is-active .step-bar i { animation: none !important; transition: width .25s ease; }
+.step .step-bar i { width: 0 !important; }
+.step.is-active .step-bar i { width: 100% !important; }
+.step:hover { opacity: .85; }
+.step.is-active:hover { opacity: 1; }
+@media (max-width:767px){
+  .step-tabs { display: flex; gap: 8px; margin-top: 28px; }
+  .step-tabs button { flex: 1 1 0; height: 38px; font-size: 14px; color: var(--ink); background: none; cursor: pointer;
+    border: 0 solid transparent; border-image: url("../assets/ui/btn-white.svg") 16 26 fill / 15px 22px stretch; }
+  .step-tabs button.is-on { color: #fff; border-image-source: url("../assets/ui/btn-purple.svg"); }
+  .steps { margin-top: 16px !important; padding-top: 0 !important; }
+  .step-bar { display: none !important; }
+}
