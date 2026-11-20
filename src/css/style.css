@@ -1336,3 +1336,10 @@ body { color: var(--ink); }
   .sc-card h3.en { font-size: 30px; }
   .sc-img { min-height: 70px; margin-top: 14px; }
 }
+/* 아티스트 카드 모바일: 옆으로 밀기 대신 세로로 쌓기 (높이는 카드마다 다르게) */
+@media (max-width:767px){
+  .showcase { flex-direction: column; align-items: stretch !important; overflow: visible; margin: 28px 0 0 !important; padding: 0 !important; gap: 12px; scroll-snap-type: none; }
+  .sc-card { width: 100% !important; scroll-snap-align: none; }
+  .sc-live { height: 380px; } .sc-price { height: 420px; } .sc-ticket { height: 390px; }
+  .sc-card:hover { transform: none; box-shadow: none; }
+}
