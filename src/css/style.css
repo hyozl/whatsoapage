@@ -1217,3 +1217,5 @@ body { color: var(--ink); }
 .pl-txt small { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 220px; }
 .playlist { justify-content: flex-start !important; } .playlist-head { margin-bottom: 12px; }
 .playlist { display: flex !important; flex-direction: column; align-content: flex-start; } .playlist .pl-list { flex: none; }
+/* 관객/아티스트 탭: 헤더에 붙지 않고 제자리에 */
+.role-tabs { position: static !important; top: auto !important; background: transparent !important; -webkit-backdrop-filter: none; backdrop-filter: none; border-bottom: 0 !important; box-shadow: none !important; padding: 8px 0 0 !important; }
