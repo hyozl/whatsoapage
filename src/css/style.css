@@ -1252,3 +1252,23 @@ body { color: var(--ink); }
   .cat-card strong { font-size: 15px; }
 }
 @media (max-width:540px){ .cats-head h2 { font-size: 24px; } .cats-head p { font-size: 15px; } }
+
+/* ============ 전체 섹션 제목: 가운데 정렬 ============ */
+.sec-head, .weeks-head, .cats-head { text-align: center !important; margin-left: auto !important; margin-right: auto !important; align-items: center; }
+.sec-head > *, .weeks-head > * { margin-left: auto; margin-right: auto; }
+.sec-head .en-title, .weeks-head .en-title { display: block; text-align: center; }
+.sec-head .en-title img, .illust-title img { margin: 0 auto; }
+.sec-cta, .weeks-cta { justify-content: center !important; text-align: center; }
+.weeks-head .text-link { display: block; text-align: center; }
+@media (min-width:768px){
+  /* 두 칸(제목 왼쪽 + 내용 오른쪽) → 제목 위, 내용 아래 */
+  #features .container, #faq .container, #faq-artist .container { display: block !important; }
+  #features .sec-head, #faq .sec-head, #faq-artist .sec-head { margin-bottom: 48px !important; max-width: 720px; }
+  #features .tracklist, #faq .faq, #faq-artist .faq { max-width: 800px !important; margin: 0 auto; }
+  #faq .faq-more, #faq-artist .faq-more { text-align: center; margin-top: 32px !important; }
+  #weeks .container, .weeks { display: block !important; }
+  .weeks-head { position: static !important; max-width: 720px; margin-bottom: 56px !important; }
+  .timeline { max-width: 560px; margin: 0 auto !important; }
+}
+.faq-more { text-align: center; }
+.hero-inner, .hero-copy, .hero-title, .hero-desc { text-align: center !important; margin-left: auto; margin-right: auto; }
