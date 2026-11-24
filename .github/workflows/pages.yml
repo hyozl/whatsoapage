@@ -1,4 +1,4 @@
-# src/ 폴더를 GitHub Pages로 배포해요. (Settings → Pages → Source: GitHub Actions)
+# src/ 폴더를 GitHub Pages로 배포해요 (Settings → Pages → Source: GitHub Actions)
 name: Deploy preview to GitHub Pages
 
 on:
@@ -13,19 +13,23 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
           path: src
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v4
