@@ -1405,3 +1405,9 @@ body { color: var(--ink); }
 .hero-stage .role-tabs { background: transparent !important; box-shadow: none !important; padding: 0 !important; }
 @media (max-width:767px){ .hero-stage .role-tabs { left: 24px; right: 24px; } }
 @media (max-width:767px){ .hero-stage .role-tabs { left: 16px; right: 16px; } .hero-stage .role-tabs-inner { gap: 8px; } .hero-stage .role-tab { font-size: 13px; padding: 0 6px; white-space: nowrap; } }
+/* 04 큐레이션: PC에서 노트북과 재생목록 높이 맞춤 */
+@media (min-width:768px){
+  .curation { align-items: stretch !important; }
+  .curation .laptop { padding: 0 !important; justify-content: flex-start; align-self: center; }
+  .curation .playlist { align-self: stretch; height: auto !important; min-height: 0 !important; }
+}

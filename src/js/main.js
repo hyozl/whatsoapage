@@ -203,7 +203,7 @@
     const render = (list) => {
       const open = list.slice();
       for (let k = open.length - 1; k > 0; k--) { const r = Math.floor(Math.random() * (k + 1)); [open[k], open[r]] = [open[r], open[k]]; }
-      const pick = open.slice(0, 3);
+      const pick = open.slice(0, 4);
       if (!pick.length) return;
       const eq = '<span class="eq"><i></i><i></i><i></i><i></i></span>';
       themeList.innerHTML = pick.map((t, n) => {
