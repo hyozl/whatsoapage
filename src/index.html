@@ -397,13 +397,25 @@
     <!-- ===== 11 엔딩 ===== -->
     <section class="sec ending">
       <div class="container">
-        <div class="ending-screen" data-ending>
-          <h2>다음 무대는<br class="mo" /> 당신의 화면에서</h2>
-          <div class="ending-cta">
-            <a class="btn btn-white" href="https://oalive.kr">관람하기</a>
-            <a class="btn btn-white" href="https://oalive.kr">등록 문의하기</a>
+        <!-- TV: 화면에 들어오면 브라운관처럼 켜지고, 벗어나면 꺼져요 -->
+        <div class="tv" data-ending>
+          <div class="tv-body">
+            <div class="ending-screen">
+              <div class="tv-content">
+                <span class="tv-ch">CH 01</span>
+                <h2>다음 무대는<br class="mo" /> 당신의 화면에서</h2>
+                <div class="ending-cta">
+                  <a class="btn btn-white" href="https://oalive.kr">관람하기</a>
+                  <a class="btn btn-white" href="https://oalive.kr">등록 문의하기</a>
+                </div>
+              </div>
+              <span class="tv-noise" aria-hidden="true"></span>
+              <span class="tv-scan" aria-hidden="true"></span>
+              <span class="tv-glare" aria-hidden="true"></span>
+            </div>
+            <div class="tv-bar"><span class="tv-brand">OA</span><span class="tv-led" aria-hidden="true"></span></div>
           </div>
-          <span class="ending-line"></span>
+          <div class="tv-stand" aria-hidden="true"><i></i><i></i></div>
         </div>
       </div>
     </section>

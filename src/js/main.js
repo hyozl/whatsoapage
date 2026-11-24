@@ -28,7 +28,7 @@
     const groups = [
       '.sec-head > *', '.hero-inner > *', '.steps .step', '.modes li', '.playlist .pl-item',
       '.cta-copy > *', '.end-card', '.bento .tile', '.tracklist .track', '.you', '.oa li',
-      '.weeks-head > *', '.timeline li', '.faq > li', '.ending-screen > h2, .ending-screen > p, .ending-cta',
+      '.weeks-head > *', '.timeline li', '.faq > li', 
       '.curation .laptop', '.devices', '.price-player', '.sec-cta', '.tabs', '.faq-more',
     ];
     const items = new Set();
@@ -396,5 +396,8 @@
 
   /* ---------- 11 엔딩: 화면에 들어오면 빛이 가운데로 모이고 선이 줄어듦 ---------- */
   const ending = $('[data-ending]');
-  if (ending) onView(ending, (vis) => ending.classList.toggle('is-in', vis), { threshold: 0.5 });
+  if (ending) onView(ending, (vis) => {
+    if (vis) { ending.classList.remove('is-off'); ending.classList.add('is-in'); }
+    else if (ending.classList.contains('is-in')) { ending.classList.remove('is-in'); ending.classList.add('is-off'); }
+  }, { threshold: 0.45 });
 })();
