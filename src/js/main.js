@@ -198,24 +198,29 @@
   if (themeList) {
     const API = 'https://api.oalive.kr';
     const esc = (t) => String(t || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    // API를 못 불러올 때 쓰는 테마 목록 (2026.11.24 기준)
+    const SNAPSHOT = [{"title": "ACC 온라인 극장", "titleEn": "ACC ONLINVE STAGE", "thumbnailPath": "/20260305/e6399abc898c11964bd7172261497a5e", "url": "/oatheme/ACC-온라인-극장"}, {"title": "제4회 대한민국 국제뮤지컬콩쿠르", "titleEn": "4th Korea International Musical Concours", "thumbnailPath": "/20261006/f39e0db17ea98cfe37269ef9d36e54bb", "url": "/oatheme/제4회-대한민국-국제뮤지컬콩쿠르"}, {"title": "숏폼 드라마 <채워지는 날들>", "titleEn": "Filling Days", "thumbnailPath": "/20260114/d67ac6e84fe81cd0f55e66d8644e7858", "url": "/oatheme/숏폼-드라마-채워지는-날들-"}, {"title": "서울연극제", "titleEn": "Seoul Theater Festival", "thumbnailPath": "/20260918/2e9673876acd2bcce66c1e4ab5af9828", "url": "/oatheme/서울연극제"}, {"title": "동아 콩쿠르", "titleEn": "DONG-A Competion", "thumbnailPath": "/20240419/117e89daf14219b94d2e569a0c547e51", "url": "/oatheme/동아-콩쿠르"}, {"title": "제1회 부산프린지 페스티벌", "titleEn": "The 1st Busan Fringe Festival", "thumbnailPath": "/20260519/bcdbef0d7db7a0947337debca0553e70", "url": "/oatheme/제1회-부산프린지-페스티벌"}, {"title": "섬나비 여름 극장", "titleEn": "sumnavi", "thumbnailPath": "/20260519/63dcfbc6b8e9cb3a26e8f6d0597744be", "url": "/oatheme/섬나비-여름-극장"}, {"title": "신진연극인페스티벌", "titleEn": "New Artists Festival", "thumbnailPath": "/20260313/5aa6707a2580fdaf7572fc6a71ec38ce", "url": "/oatheme/신진연극인페스티벌"}, {"title": "오아라이브 페스티벌", "titleEn": "OALIVE Festival", "thumbnailPath": "/20241030/1f40efa8485cae30b649018cbf55c472", "url": "/oatheme/오아라이브-페스티벌"}, {"title": "아이엠컬처 10주년", "titleEn": "imculture 10th", "thumbnailPath": "/20241227/6ca43c5400d82982ea2ed01e3869e8b8", "url": "/oatheme/아이엠컬처-10주년"}, {"title": "주다컬쳐를 다 주다", "titleEn": "JOO:DA.zip", "thumbnailPath": "/20250819/6a80827f2f2af2bf81f9c6ebce5d5f97", "url": "/oatheme/주다컬쳐를-다-주다"}, {"title": "1번출구 연극제", "titleEn": "exit1 theater festival", "thumbnailPath": "/20250718/f7b943942eaefc6713e30c7e175afa04", "url": "/oatheme/1번출구-연극제"}, {"title": "[OA Originals] 웹뮤지컬 ‘골드보이’", "titleEn": "[OA Originals] Web Musical ‘GOLD BOY’", "thumbnailPath": "/20221104/0444672b44588b8758035bb6effd5626", "url": "/oatheme/OA-Originals-웹뮤지컬-‘골드보이’"}, {"title": "창무국제공연예술제", "titleEn": "ChangMu International Performing Arts Festival", "thumbnailPath": "/20241206/48f8100a9416cad8716bdb4210795519", "url": "/oatheme/창무국제공연예술제"}, {"title": "서울세계무용축제", "titleEn": "SIDance", "thumbnailPath": "/20240419/79f09611bb430586ab7bab0690779646", "url": "/oatheme/서울세계무용축제"}, {"title": "극공작소 마방진", "titleEn": "Playfactory Mabangzen", "thumbnailPath": "/20240419/5ae4e70fed67c59254583574a51692fa", "url": "/oatheme/극공작소-마방진"}, {"title": "브리즈 뮤지컬 컴퍼니", "titleEn": "BREEZE the active musical team", "thumbnailPath": "/20220124/1f62fe21642fe7a08e63100d2534fc75", "url": "/oatheme/브리즈-뮤지컬-컴퍼니"}];
+    const render = (list) => {
+      const open = list.slice();
+      for (let k = open.length - 1; k > 0; k--) { const r = Math.floor(Math.random() * (k + 1)); [open[k], open[r]] = [open[r], open[k]]; }
+      const pick = open.slice(0, 3);
+      if (!pick.length) return;
+      const eq = '<span class="eq"><i></i><i></i><i></i><i></i></span>';
+      themeList.innerHTML = pick.map((t, n) => {
+        const img = t.thumbnailPath ? API + '/files/image' + t.thumbnailPath : '';
+        const href = 'https://oalive.kr' + encodeURI(t.url || '/oatheme');
+        return '<a class="pl-item' + (n === 0 ? ' is-now' : '') + '" href="' + href + '" target="_blank" rel="noopener">' +
+          '<span class="thumb t' + (n + 1) + '"' + (img ? ' style="background-image:url(\'' + img + '\')"' : '') + '>' + (n === 0 ? eq : '') + '</span>' +
+          '<span class="pl-txt"><b>' + esc(String(t.title).trim()) + '</b><small>' + esc(t.titleEn) + '</small></span></a>';
+      }).join('');
+      $$('.pl-item', themeList).forEach((el) => el.classList.add('is-in'));
+    };
+    // 먼저 내장 목록으로 바로 보여주고, API가 되면 최신 목록으로 바꿔요
+    render(SNAPSHOT);
     fetch(API + '/oatheme')
       .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
-      .then((res) => {
-        const open = (res.data || []).filter((t) => t.isOpen);
-        for (let k = open.length - 1; k > 0; k--) { const r = Math.floor(Math.random() * (k + 1)); [open[k], open[r]] = [open[r], open[k]]; }
-        const pick = open.slice(0, 3);
-        if (!pick.length) return;
-        const eq = '<span class="eq"><i></i><i></i><i></i><i></i></span>';
-        themeList.innerHTML = pick.map((t, n) => {
-          const img = t.thumbnailPath ? API + '/files/image' + t.thumbnailPath : '';
-          const href = 'https://oalive.kr' + encodeURI(t.url || '/oatheme');
-          return '<a class="pl-item' + (n === 0 ? ' is-now' : '') + '" href="' + href + '" target="_blank" rel="noopener">' +
-            '<span class="thumb t' + (n + 1) + '"' + (img ? ' style="background-image:url(\'' + img + '\')"' : '') + '>' + (n === 0 ? eq : '') + '</span>' +
-            '<span class="pl-txt"><b>' + esc(t.title.trim()) + '</b><small>' + esc(t.titleEn) + '</small></span></a>';
-        }).join('');
-        $$('.pl-item', themeList).forEach((el) => el.classList.add('is-in'));
-      })
-      .catch(() => { /* 불러오기 실패: 기본값 유지 */ });
+      .then((res) => { const open = (res.data || []).filter((t) => t.isOpen); if (open.length) render(open); })
+      .catch(() => { /* 불러오기 실패: 내장 목록 유지 */ });
     // 마우스를 올린 항목이 NOW PLAYING
     themeList.addEventListener('mouseover', (e) => {
       const it = e.target.closest('.pl-item'); if (!it) return;
@@ -287,7 +292,8 @@
     selectTab(role === 'artist' ? 'artist' : 'aud');   // FAQ 탭도 같이
     history.replaceState(null, '', role === 'artist' ? '#forArtist' : '#forAudience');
     if (scroll && roleBar) {
-      const top = roleBar.getBoundingClientRect().top + window.scrollY - (headerEl ? headerEl.offsetHeight : 0);
+      const panelEl = document.getElementById('panel-' + (role === 'artist' ? 'artist' : 'audience'));
+      const top = (panelEl || roleBar).getBoundingClientRect().top + window.scrollY - (headerEl ? headerEl.offsetHeight : 0);
       window.scrollTo({ top, behavior: REDUCE ? 'auto' : 'smooth' });
     }
   };

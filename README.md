@@ -284,3 +284,9 @@ Figma **`자료 · 캡처`** 페이지의 캡처를 PNG로 내보내 아래 이�
 
 - 모바일 글자 크기 기준: [Toss Design System — Typography](https://tossmini-docs.toss.im/tds-mobile/foundation/typography/)
 - 폰트·로고는 오아라이브(주식회사 필더필) 브랜드 자산이에요. 외부 프로젝트에 쓰지 마세요.
+
+
+## 관객/아티스트 탭 위치 · 오뗌 극장 테마
+- 관객으로 둘러보기 / 아티스트로 참여하기 탭은 영상 위에 떠 있어요 (PC: 영상 아래쪽 안, 모바일: 영상 아래 가장자리에 걸침)
+- WoW 슬라이더 글자는 Ordinary Artist 글씨체
+- 재생목록은 `https://api.oalive.kr/oatheme`에서 공개된 테마 중 3개를 무작위로 보여줘요. API를 못 부르면 `main.js`의 `SNAPSHOT`(2026.11.24 기준) 목록에서 골라요
