@@ -1411,3 +1411,8 @@ body { color: var(--ink); }
   .curation .laptop { padding: 0 !important; justify-content: flex-start; align-self: center; }
   .curation .playlist { align-self: stretch; height: auto !important; min-height: 0 !important; }
 }
+/* 05 카테고리: 추천 작품 제목 */
+.cat-card { gap: 6px !important; }
+.cat-card .cat-img { margin-bottom: 10px; }
+.cat-card .cat-work { font-size: 14px; color: var(--g500, #777); line-height: 1.45; max-width: 100%; padding: 0 8px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; text-align: center; }
+@media (max-width:767px){ .cat-card .cat-work { font-size: 12px; } .cat-card .cat-img { margin-bottom: 6px; } }

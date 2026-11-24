@@ -230,6 +230,41 @@
     });
   }
 
+  /* ---------- 05 카테고리: 카테고리마다 추천 작품 한 편씩 ---------- */
+  const catCards = $$('.cat-card[data-genre]');
+  if (catCards.length) {
+    const API = 'https://api.oalive.kr';
+    const Q = { free: 'genre=all&type=vod&excludeCharged=true', musical: 'genre=musical&type=all', theater: 'genre=theater&type=all', dance: 'genre=dance&type=all', music: 'genre=music&type=all', interview: 'genre=interview&type=all' };
+    // API를 못 불러올 때 쓰는 작품 목록 (2026.11.24 기준)
+    const CAT_SNAPSHOT = {"free": [{"title": "연극 <장도>", "thumbnail": "/20250124/33cac6ad0306edc73b36f6eb5a93de2b", "route": "/watch/vod/연극-장도"}, {"title": "숏폼 드라마 <채워지는 날들> 1-7화", "thumbnail": "/20260114/4907b9f96129d3d1621b04c8d8fa4f19", "route": "/watch/vod/숏폼-드라마-채워지는-날들-1-7화"}, {"title": "연극 <매일이 크리스마스(낭독공연)>", "thumbnail": "/20250328/740361267b9f3a27845b1160dcd12ae7", "route": "/watch/vod/연극-매일이-크리스마스낭독공연"}, {"title": "연극 <미미를 채워주세요(낭독공연)>", "thumbnail": "/20250328/5792772e4cd64c84b2f57c68f4754506", "route": "/watch/vod/연극-미미를-채워주세요낭독공연"}, {"title": "연극 <데스포이나(낭독공연)>", "thumbnail": "/20250328/43c52e5bcc4974b73e58f54aff1ed4f8", "route": "/watch/vod/연극-데스포이나낭독공연"}], "musical": [{"title": "[제4회 대한민국 국제뮤지컬콩쿠르] 고등부", "thumbnail": "/20261006/47ea637e0ce9e3449e8e0cbf6d770dc1", "route": "/watch/vod/제4회-대한민국-국제뮤지컬콩쿠르-고등부"}, {"title": "[제4회 대한민국 국제뮤지컬콩쿠르] 초등부 (2)", "thumbnail": "/20261006/2daa136074943664ece2455bc77c55b4", "route": "/watch/vod/제4회-대한민국-국제뮤지컬콩쿠르-초등부-2"}, {"title": "[제4회 대한민국 국제뮤지컬콩쿠르] 초등부 (1)", "thumbnail": "/20261006/335b58b791b60f1e09d3d093f1b32e61", "route": "/watch/vod/제4회-대한민국-국제뮤지컬콩쿠르-초등부-1"}, {"title": "[제4회 대한민국 국제뮤지컬콩쿠르] 대학일반부 (1)", "thumbnail": "/20261006/fd9fd063c120c501facae99eeb195c04", "route": "/watch/vod/제4회-대한민국-국제뮤지컬콩쿠르-대학일반부-1"}, {"title": "[제4회 대한민국 국제뮤지컬콩쿠르] 중등부", "thumbnail": "/20261006/8964e8d6a5d870bb1e9edf1e6276144c", "route": "/watch/vod/제4회-대한민국-국제뮤지컬콩쿠르-중등부"}], "theater": [{"title": "연극 <장도>", "thumbnail": "/20250124/33cac6ad0306edc73b36f6eb5a93de2b", "route": "/watch/vod/연극-장도"}, {"title": "연극 <회란기>", "thumbnail": "/20250305/73e512581980696d5c54019ab1f3930d", "route": "/watch/vod/연극-회란기"}, {"title": "연극 <당신은 아들을 모른다>", "thumbnail": "/20260805/bcc3a50cae63af9b456b8c0bee176401", "route": "/watch/vod/연극-당신은-아들을-모른다"}, {"title": "숏폼 드라마 <채워지는 날들> 1-7화", "thumbnail": "/20260114/4907b9f96129d3d1621b04c8d8fa4f19", "route": "/watch/vod/숏폼-드라마-채워지는-날들-1-7화"}, {"title": "연극 <장소>", "thumbnail": "/20251020/8cd98e7e33ac44762d580b140b0098ea", "route": "/watch/vod/연극-장소"}], "dance": [{"title": "[53회 동아무용] 한국무용(창작) 고등부 본선 진출작", "thumbnail": "/20230706/5de34e97f9c742391142cb2f9da7d394", "route": "/watch/vod/53회-동아무용-한국무용창작-고등부-본선-진출작"}, {"title": "무용 <7th Altimeets - 시선 너머의 결핍>", "thumbnail": "/20251208/c4dc3240817e7b3bfb25c744028906cb", "route": "/watch/vod/무용-7th-altimeets---시선-너머의-결핍"}, {"title": "전복된 해부학적 풍경(SAL) <88>", "thumbnail": "/20241129/1db95fb9d77515d47156c414ebe0f77a", "route": "/watch/vod/전복된-해부학적-풍경sal-88"}, {"title": "[53회 동아무용] 한국무용(창작) 일반부(여자) 본선 진출작", "thumbnail": "/20230706/3879e14662085e355e1ae09d061424e6", "route": "/watch/vod/53회-동아무용-한국무용창작-일반부여자-본선-진출작"}, {"title": "[53회 동아무용] 현대무용 전체 부문 수상작", "thumbnail": "/20230706/be21c76f0e46baf3878afa3ee8c574dc", "route": "/watch/vod/53회-동아무용-현대무용-전체-부문-수상작"}], "music": [{"title": "[62회 동아음악] 콘트라베이스 본선 경연 영상", "thumbnail": "/20230118/792992abea8a3a6c0f8a13f9f67969c9", "route": "/watch/vod/62회-동아음악-콘트라베이스-본선-경연-영상"}, {"title": "[62회 동아음악] 바이올린 본선 경연 영상", "thumbnail": "/20230118/63f65dd60c07a155c294dc6693225bed", "route": "/watch/vod/62회-동아음악-바이올린-본선-경연-영상"}, {"title": "[62회 동아음악] 트롬본 본선 경연 영상", "thumbnail": "/20230118/432c4925a1a1260ccfe4f2fd176380da", "route": "/watch/vod/62회-동아음악-트롬본-본선-경연-영상"}, {"title": "[62회 동아음악] 비올라 본선 경연 영상", "thumbnail": "/20230118/ea52ba3829f9d40ada22fb77033a3e6c", "route": "/watch/vod/62회-동아음악-비올라-본선-경연-영상"}], "interview": [{"title": "[53회 동아무용] 수상자 인터뷰", "thumbnail": "/20230524/c4801c3cca487dec0b7628c3897e7ad1", "route": "/watch/vod/53회-동아무용-수상자-인터뷰"}, {"title": "[7회 동아뮤지컬] 고등부, 대학(일반)부 수상자 인터뷰", "thumbnail": "/20240129/7c9bd9472c20a3032b2a9517fcc56b2d", "route": "/watch/vod/7회-동아뮤지컬-고등부-대학일반부-수상자-인터뷰"}, {"title": "[53회 동아무용] 심사위원 인터뷰", "thumbnail": "/20230524/33e99233b0a99cbbed466c65a4a87070", "route": "/watch/vod/53회-동아무용-심사위원-인터뷰"}, {"title": "[52회 동아무용] 부문별 수상자 인터뷰", "thumbnail": "/20220804/5a2c6f0784f68e0c98ee5664cc784191", "route": "/watch/vod/52회-동아무용-부문별-수상자-인터뷰"}, {"title": "[6회 동아뮤지컬] 본선 진출자 축하무대", "thumbnail": "/20230323/a723be9dd143c0fba7ffd10271868d53", "route": "/watch/vod/6회-동아뮤지컬-본선-진출자-축하무대"}]};
+    const used = new Set();
+    const pickOne = (list) => {
+      const pool = list.filter((w) => !used.has(w.route)).slice(0, 5);
+      if (!pool.length) return null;
+      const w = pool[Math.floor(Math.random() * pool.length)];
+      used.add(w.route); return w;
+    };
+    const fill = (card, w) => {
+      if (!w) return;
+      let img = card.querySelector('.cat-img img');
+      if (!img) { img = document.createElement('img'); img.alt = ''; img.loading = 'lazy'; card.querySelector('.cat-img').prepend(img); }
+      img.onerror = null; img.loading = 'eager'; img.src = API + '/files/image' + w.thumbnail; img.alt = w.title;
+      card.href = 'https://oalive.kr' + encodeURI(w.route);
+      let sm = card.querySelector('.cat-work');
+      if (!sm) { sm = document.createElement('small'); sm.className = 'cat-work'; card.appendChild(sm); }
+      sm.textContent = w.title;
+    };
+    const clean = (k, items) => items.filter((i) => i.thumbnail && i.route && (k === 'interview' || (i._tag === 'feature' && !String(i.type || '').includes('oaplus'))))
+      .map((i) => ({ title: String(i.title).trim(), thumbnail: i.thumbnail, route: i.route }));
+    Promise.all(catCards.map((card) => {
+      const k = card.dataset.genre;
+      return fetch(API + '/board/features/watch?excludeClosed=false&fixedContentsIndex=&size=15&sort=recommend&' + Q[k])
+        .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+        .then((res) => { const l = clean(k, (res.data && res.data.items) || []); return l.length ? l : CAT_SNAPSHOT[k]; })
+        .catch(() => CAT_SNAPSHOT[k] || []);
+    })).then((lists) => lists.forEach((l, n) => fill(catCards[n], pickOne(l))));
+  }
+
   /* ---------- 07·10 펼침 목록: 부드럽게 열리고, 하나만 열림 ---------- */
   $$('.track-a, .faq-a').forEach((a) => {
     if (a.firstElementChild && a.firstElementChild.classList.contains('acc-inner')) return;
