@@ -1416,3 +1416,14 @@ body { color: var(--ink); }
 .cat-card .cat-img { margin-bottom: 10px; }
 .cat-card .cat-work { font-size: 14px; color: var(--g500, #777); line-height: 1.45; max-width: 100%; padding: 0 8px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; text-align: center; }
 @media (max-width:767px){ .cat-card .cat-work { font-size: 12px; } .cat-card .cat-img { margin-bottom: 6px; } }
+/* 06 아티스트 카드: 누르면 가운데로 회전 (높이는 자리 기준: 가운데가 가장 큼) */
+.sc-card { cursor: pointer; }
+.showcase .sc-card:nth-child(1) { height: 470px; }
+.showcase .sc-card:nth-child(2) { height: 530px; box-shadow: 0 24px 48px rgba(52,26,90,.16); cursor: default; }
+.showcase .sc-card:nth-child(3) { height: 450px; }
+.sc-card:focus-visible { outline: 3px solid var(--brand-color); outline-offset: 4px; }
+@media (max-width:767px){
+  .showcase .sc-card:nth-child(1) { height: 250px; }
+  .showcase .sc-card:nth-child(2) { height: 280px; }
+  .showcase .sc-card:nth-child(3) { height: 260px; }
+}

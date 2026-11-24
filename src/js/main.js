@@ -265,6 +265,33 @@
     })).then((lists) => lists.forEach((l, n) => fill(catCards[n], pickOne(l))));
   }
 
+  /* ---------- 06 아티스트 카드: 누른 카드가 가운데로 오도록 회전 ---------- */
+  const showcase = $('.showcase');
+  if (showcase) {
+    let busy = false;
+    const rotateTo = (card) => {
+      const cards = $$('.sc-card', showcase);
+      const i = cards.indexOf(card);
+      if (busy || i < 0 || i === 1) return;
+      busy = true;
+      const first = new Map(cards.map((c) => [c, c.getBoundingClientRect()]));
+      // 왼쪽을 누르면 오른쪽으로, 오른쪽을 누르면 왼쪽으로 한 칸씩 돌아요
+      if (i === 0) showcase.insertBefore(cards[2], cards[0]);
+      else showcase.appendChild(cards[0]);
+      cards.forEach((c) => {
+        const a = first.get(c), b = c.getBoundingClientRect();
+        const dx = a.left - b.left, dy = a.top - b.top, sy = a.height / b.height;
+        c.animate([
+          { transform: 'translate(' + dx + 'px,' + dy + 'px) scaleY(' + sy + ')', transformOrigin: 'top center' },
+          { transform: 'none', transformOrigin: 'top center' }
+        ], { duration: 520, easing: 'cubic-bezier(.22,.8,.24,1)' });
+      });
+      setTimeout(() => { busy = false; }, 540);
+    };
+    showcase.addEventListener('click', (e) => { const c = e.target.closest('.sc-card'); if (c) rotateTo(c); });
+    showcase.addEventListener('keydown', (e) => { if (e.key !== 'Enter' && e.key !== ' ') return; const c = e.target.closest('.sc-card'); if (c) { e.preventDefault(); rotateTo(c); } });
+  }
+
   /* ---------- 07·10 펼침 목록: 부드럽게 열리고, 하나만 열림 ---------- */
   $$('.track-a, .faq-a').forEach((a) => {
     if (a.firstElementChild && a.firstElementChild.classList.contains('acc-inner')) return;
