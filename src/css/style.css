@@ -1401,3 +1401,7 @@ body { color: var(--ink); }
 .price-labels { justify-content: flex-end !important; }
 .price-labels .wow-max { font-family: "Noto Sans KR", sans-serif !important; font-weight: 600 !important; font-size: 15px !important; letter-spacing: 0 !important; color: var(--brand-color); }
 @media (max-width:767px){ .price-labels .wow-max { font-size: 13px !important; } }
+/* 영상 위 탭: 뒤 흰 박스 없이 버튼만 */
+.hero-stage .role-tabs { background: transparent !important; box-shadow: none !important; padding: 0 !important; }
+@media (max-width:767px){ .hero-stage .role-tabs { left: 24px; right: 24px; } }
+@media (max-width:767px){ .hero-stage .role-tabs { left: 16px; right: 16px; } .hero-stage .role-tabs-inner { gap: 8px; } .hero-stage .role-tab { font-size: 13px; padding: 0 6px; white-space: nowrap; } }
