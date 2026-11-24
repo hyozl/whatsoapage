@@ -176,8 +176,8 @@ Figma **`자료 · 캡처`** 페이지의 캡처를 PNG로 내보내 아래 이�
 | 카드 | 위쪽 큰 이미지 | 아래 이미지 |
 |---|---|---|
 | LIVE / VOD | `artist-live-top.png` | `artist-live.png` |
-| MY PRICE | (없음, 보라 그라데이션) | `artist-price.png` |
-| TICKET + WOW | `artist-ticket-top.png` | `artist-ticket.png` |
+| MY PRICE | (없음, 보라 그라데이션) | `artist-oaplus.png` |
+| TICKET + WOW | `artist-wow-top.png` | `artist-wow.png` |
 
 `src/assets/img/` 에 위 이름으로 넣으면 자동으로 보여요. 위쪽 이미지는 가로 720 × 세로 400 정도, 아래 이미지는 가로 600 × 세로 300 정도를 권장해요.
 

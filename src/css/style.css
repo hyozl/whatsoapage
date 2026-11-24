@@ -1427,3 +1427,5 @@ body { color: var(--ink); }
   .showcase .sc-card:nth-child(2) { height: 280px; }
   .showcase .sc-card:nth-child(3) { height: 260px; }
 }
+.sc-icon.sc-plus { font-size: 30px; font-weight: 400; line-height: 1; }
+@media (max-width:767px){ .sc-icon.sc-plus { font-size: 22px; } }
