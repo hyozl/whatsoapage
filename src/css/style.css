@@ -1397,3 +1397,7 @@ body { color: var(--ink); }
 .price-labels .wow-max { font-family: "Ordinary Artist", "Noto Sans KR", sans-serif; font-weight: 400; font-size: 18px; letter-spacing: .03em; }
 @media (max-width:767px){ .hero-stage .stage-bottom { bottom: 38px !important; } }
 @media (min-width:768px){ .hero-stage .role-tabs { bottom: 72px; translate: -50% 0; background: rgba(255,255,255,.96) !important; } .hero { padding-bottom: 72px !important; } }
+/* 슬라이더 아래 라벨: 응원하기 (오른쪽 끝) */
+.price-labels { justify-content: flex-end !important; }
+.price-labels .wow-max { font-family: "Noto Sans KR", sans-serif !important; font-weight: 600 !important; font-size: 15px !important; letter-spacing: 0 !important; color: var(--brand-color); }
+@media (max-width:767px){ .price-labels .wow-max { font-size: 13px !important; } }
