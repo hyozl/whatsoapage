@@ -265,6 +265,24 @@
     })).then((lists) => lists.forEach((l, n) => fill(catCards[n], pickOne(l))));
   }
 
+  /* ---------- 06 아티스트 카드: 누르면 뒤집기 ---------- */
+  $$('.sc-card').forEach((card) => {
+    let busy = false;
+    const flip = () => {
+      if (busy) return; busy = true;
+      card.classList.add('is-turning');
+      setTimeout(() => {
+        const on = card.classList.toggle('is-flipped');
+        card.setAttribute('aria-pressed', on ? 'true' : 'false');
+        const back = card.querySelector('.sc-back'); if (back) back.setAttribute('aria-hidden', on ? 'false' : 'true');
+        card.classList.remove('is-turning'); card.classList.add('is-back-in');
+        requestAnimationFrame(() => requestAnimationFrame(() => { card.classList.remove('is-back-in'); setTimeout(() => { busy = false; }, 230); }));
+      }, 220);
+    };
+    card.addEventListener('click', (e) => { if (e.target.closest('a')) return; flip(); });
+    card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); } });
+  });
+
   /* ---------- 07·10 펼침 목록: 부드럽게 열리고, 하나만 열림 ---------- */
   $$('.track-a, .faq-a').forEach((a) => {
     if (a.firstElementChild && a.firstElementChild.classList.contains('acc-inner')) return;

@@ -257,26 +257,44 @@
         </header>
         <!-- 아티스트 카드 3장 (이미지: src/assets/img/artist-*.png 넣으면 자동 표시) -->
         <ul class="showcase">
-            <li class="sc-card sc-live">
+            <li class="sc-card sc-live" tabindex="0" role="button" aria-pressed="false" aria-label="LIVE / VOD 카드 뒤집기">
+              <span class="sc-flip-hint" aria-hidden="true">+</span>
               <span class="sc-top"><img src="assets/img/artist-live-top.png" alt="" loading="lazy" onerror="this.remove()" /></span>
               <span class="sc-icon"><i class="oa-ico" aria-hidden="true">&#xe901;</i></span>
               <h3 class="en">LIVE / VOD</h3>
               <p>녹화 중계 LIVE와 VOD로<br />언제 어디서나 더 많은 관객을 만나요</p>
               <span class="sc-img"><img src="assets/img/artist-live.png" alt="" loading="lazy" onerror="this.remove()" /></span>
+              <div class="sc-back" aria-hidden="true">
+                <h3 class="en">LIVE / VOD</h3>
+                <ul><li><b>LIVE</b> 정해진 시간에 공연 영상을 함께 보고, 채팅으로 관객과 이야기해요</li><li><b>VOD</b> 재생 기간 동안 관객이 원하는 만큼 다시 보는 대여 방식이에요</li></ul>
+                <span class="sc-back-hint">한 번 더 누르면 돌아가요</span>
+              </div>
             </li>
-            <li class="sc-card sc-price">
+            <li class="sc-card sc-price" tabindex="0" role="button" aria-pressed="false" aria-label="MY PRICE 카드 뒤집기">
+              <span class="sc-flip-hint" aria-hidden="true">+</span>
               
               <span class="sc-icon">₩</span>
               <h3 class="en">MY PRICE</h3>
               <p>작품의 티켓 가격을 직접 정해요<br />어렵다면 오아라이브가 함께 정해요</p>
               <span class="sc-img"><img src="assets/img/artist-price.png" alt="" loading="lazy" onerror="this.remove()" /></span>
+              <div class="sc-back" aria-hidden="true">
+                <h3 class="en">MY PRICE</h3>
+                <ul><li>가격은 아티스트가 직접 정해요</li><li>오프라인 티켓 가격을 기준으로 오아라이브가 가이드를 드려요</li><li>관객은 정한 가격부터 원하는 만큼 더 내고 볼 수 있어요</li></ul>
+                <span class="sc-back-hint">한 번 더 누르면 돌아가요</span>
+              </div>
             </li>
-            <li class="sc-card sc-ticket">
+            <li class="sc-card sc-ticket" tabindex="0" role="button" aria-pressed="false" aria-label="TICKET + WOW 카드 뒤집기">
+              <span class="sc-flip-hint" aria-hidden="true">+</span>
               <span class="sc-top"><img src="assets/img/artist-ticket-top.png" alt="" loading="lazy" onerror="this.remove()" /></span>
               <span class="sc-icon"><i class="oa-ico" aria-hidden="true">&#xe949;</i></span>
               <h3 class="en">TICKET + WOW</h3>
               <p>관객이 보낸 WoW는<br />티켓 수익과 함께 정산해 드려요</p>
               <span class="sc-img"><img src="assets/img/artist-ticket.png" alt="" loading="lazy" onerror="this.remove()" /></span>
+              <div class="sc-back" aria-hidden="true">
+                <h3 class="en">TICKET + WOW</h3>
+                <ul><li>티켓 수익과 관객이 보낸 WoW를 함께 정산해요</li><li>분기마다 정산하고, 참여진별 배분율에 따라 나눠 드려요</li></ul>
+                <span class="sc-back-hint">한 번 더 누르면 돌아가요</span>
+              </div>
             </li>
         </ul>
         <div class="sc-stmt">
