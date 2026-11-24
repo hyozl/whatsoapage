@@ -1416,28 +1416,3 @@ body { color: var(--ink); }
 .cat-card .cat-img { margin-bottom: 10px; }
 .cat-card .cat-work { font-size: 14px; color: var(--g500, #777); line-height: 1.45; max-width: 100%; padding: 0 8px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; text-align: center; }
 @media (max-width:767px){ .cat-card .cat-work { font-size: 12px; } .cat-card .cat-img { margin-bottom: 6px; } }
-/* 06 아티스트 카드: 누르면 뒤집혀요 */
-.showcase { perspective: 1400px; }
-.sc-card { cursor: pointer; transition: transform .3s ease, box-shadow .3s ease, rotate .22s ease-in; }
-.sc-card.is-turning { rotate: y 90deg; }
-.sc-card.is-back-in { rotate: y -90deg; transition: none; }
-.sc-flip-hint { position: absolute; top: 16px; right: 16px; z-index: 3; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.9); color: var(--brand-color); font-size: 20px; line-height: 31px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.08); transition: transform .3s; }
-.sc-card:hover .sc-flip-hint { transform: rotate(90deg); }
-.sc-back { position: absolute; inset: 0; z-index: 4; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 32px 28px; background: var(--brand-color); color: #fff; text-align: center; border-radius: inherit; }
-.sc-card.is-flipped .sc-back { display: flex; }
-.sc-card.is-flipped .sc-flip-hint { display: none; }
-.sc-back h3.en { margin: 0 !important; font-family: "Ordinary Artist", "Noto Sans KR", sans-serif; font-weight: 400; font-size: 40px; line-height: 1.1; color: #fff !important; }
-.sc-back ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
-.sc-back li { font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.92); word-break: keep-all; }
-.sc-back li b { display: block; font-weight: 600; color: #fff; }
-.sc-back-hint { margin-top: 6px; font-size: 13px; color: rgba(255,255,255,.65); }
-.sc-card:focus-visible { outline: 3px solid var(--brand-color); outline-offset: 4px; }
-@media (max-width:767px){
-  .sc-flip-hint { top: 10px; right: 10px; width: 26px; height: 26px; font-size: 17px; line-height: 25px; }
-  .sc-back { padding: 16px 18px; gap: 8px; }
-  .sc-back h3.en { font-size: 24px; }
-  .sc-back ul { gap: 6px; }
-  .sc-back li { font-size: 12px; line-height: 1.5; }
-  .sc-back-hint { font-size: 11px; margin-top: 2px; }
-}
-@media (prefers-reduced-motion: reduce){ .sc-card.is-turning, .sc-card.is-back-in { rotate: none; } }
