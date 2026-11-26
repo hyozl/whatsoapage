@@ -195,12 +195,12 @@ Figma **`자료 · 캡처`** 페이지의 캡처를 PNG로 내보내 아래 이�
 
 | 카드 | 링크 | 이미지 파일 |
 |---|---|---|
-| 무료 작품 | /watch/free | `src/assets/img/cat-free.png` |
-| 뮤지컬 | /watch?genre=musical | `cat-musical.png` |
-| 연극 | /watch?genre=theater | `cat-theater.png` |
-| 무용 | /watch?genre=dance | `cat-dance.png` |
-| 음악 | /watch?genre=music | `cat-music.png` |
-| 인터뷰 | /watch?genre=interview | `cat-interview.png` |
+| 무료 작품 | /watch/free | 추천 작품 썸네일 (자동) |
+| 뮤지컬 | /watch?genre=musical | 추천 작품 썸네일 (자동) |
+| 연극 | /watch?genre=theater | 추천 작품 썸네일 (자동) |
+| 무용 | /watch?genre=dance | 추천 작품 썸네일 (자동) |
+| 음악 | /watch?genre=music | 추천 작품 썸네일 (자동) |
+| 인터뷰 | /watch?genre=interview | 추천 작품 썸네일 (자동) |
 
 이미지를 위 이름으로 `src/assets/img/` 에 넣기만 하면 자동으로 보여요 (권장 비율 269:240, 가로 800px 이상). 없으면 회색 칸으로 보여요.
 
