@@ -105,15 +105,20 @@
     const mo = $('[data-step-img="mo"]', player);
     let idx = 0;
     steps.forEach((s) => { [s.dataset.pc, s.dataset.mo].forEach((src) => { if (src) new Image().src = src; }); });
+    // 디졸브: 새 화면을 위에 겹쳐 천천히 나타나게 하고, 다 나타나면 아래 화면을 바꿔요 (검정 화면 없이)
     const swap = (img, src) => {
       if (!img || !src || img.getAttribute('src') === src) return;
-      img.style.opacity = 0;   // 디졸브: 천천히 사라졌다가
-      setTimeout(() => {
-        const test = new Image();
-        test.onload = () => { img.classList.remove('is-missing'); img.src = src; img.style.opacity = ''; };
-        test.onerror = () => { img.classList.add('is-missing'); img.src = src; img.style.opacity = ''; };
-        test.src = src;
-      }, 450);
+      const box = img.parentElement;
+      $$('.step-fade', box).forEach((n) => n.remove());
+      const top = img.cloneNode();
+      top.removeAttribute('data-step-img');
+      top.removeAttribute('loading');
+      top.className = (img.className + ' step-fade').trim();
+      top.style.cssText = 'position:absolute;left:' + img.offsetLeft + 'px;top:' + img.offsetTop + 'px;opacity:0;transition:opacity .7s ease;';
+      const done = () => { img.classList.remove('is-missing'); img.src = src; setTimeout(() => top.remove(), 60); };
+      top.onload = () => { box.appendChild(top); requestAnimationFrame(() => requestAnimationFrame(() => { top.style.opacity = 1; })); setTimeout(done, 720); };
+      top.onerror = () => { img.classList.add('is-missing'); img.src = src; };
+      top.src = src;
     };
     const show = (i) => {
       idx = (i + steps.length) % steps.length;
