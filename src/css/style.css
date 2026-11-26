@@ -1452,3 +1452,5 @@ body { color: var(--ink); }
 .stage-screen.has-video::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to bottom, rgba(10,8,16,.4), rgba(10,8,16,0) 35%, rgba(10,8,16,0) 60%, rgba(10,8,16,.6)); }
 .stage-screen.has-video .stage-top, .stage-screen.has-video .stage-chat, .stage-screen.has-video .stage-bottom { z-index: 2; }
 .stage-screen.has-video .stage-glow { opacity: .14 !important; }
+/* 03 모드 카드: 유료 작품(PAY) 카드도 마우스 올리면 그림자 */
+.modes li:hover, .modes li.is-accent:hover, .modes li.is-pay:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(52,26,90,.12) !important; }
