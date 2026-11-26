@@ -249,7 +249,9 @@ Figma **`자료 · 캡처`** 페이지의 캡처를 PNG로 내보내 아래 이�
 
 ## 아티스트 소개서 링크 넣는 법
 
-`src/index.html` 에서 `data-deck` 이 붙은 링크 2곳의 `href="#"` 를 구글 드라이브 공유 링크로 바꿔요.
+`src/index.html` 에서 `data-deck` 이 붙은 링크 2곳이 아티스트 소개서 구글 드라이브 폴더(https://drive.google.com/drive/folders/1pdNZ5bohfqqxvVEWRRyovb0xwIfM5Ofa)로 연결돼요. 바꾸려면 두 곳의 `href`를 함께 바꿔요.
+
+맨 아래 "등록 문의하기"는 카카오톡 채널(https://pf.kakao.com/_Peizb)로 새 창에서 열려요.
 
 | 위치 | 모양 |
 |---|---|
