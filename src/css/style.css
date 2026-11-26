@@ -1429,3 +1429,13 @@ body { color: var(--ink); }
 }
 .sc-icon.sc-plus { font-size: 30px; font-weight: 400; line-height: 1; }
 @media (max-width:767px){ .sc-icon.sc-plus { font-size: 22px; } }
+/* LIVE 칩: 점과 글자 안 겹치게 */
+.chip-live { padding-left: 20px !important; }
+/* 04 재생목록: 4개가 상자 높이에 맞게 고르게 채워지도록 */
+@media (min-width:768px){
+  .curation .playlist { display: flex !important; flex-direction: column; }
+  .curation .pl-list { flex: 1 1 auto; display: flex !important; flex-direction: column; justify-content: space-between; gap: 6px; }
+  .curation .pl-item { flex: 1 1 0; align-items: center; }
+}
+/* 05 카테고리 카드: 살짝 가로로 긴 직사각형 (썸네일 양옆 잘림 줄이기) */
+.cat-img { aspect-ratio: 16 / 11 !important; }

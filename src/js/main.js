@@ -193,7 +193,7 @@
     }
   }
 
-  /* ---------- 04 재생목록: 오뗌 극장 테마 3개를 무작위로 불러와요 ---------- */
+  /* ---------- 04 재생목록: 오뗌극장 테마 3개를 무작위로 불러와요 ---------- */
   const themeList = $('[data-oatheme]');
   if (themeList) {
     const API = 'https://api.oalive.kr';
