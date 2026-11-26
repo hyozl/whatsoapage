@@ -297,6 +297,6 @@ Figma **`자료 · 캡처`** 페이지의 캡처를 PNG로 내보내 아래 이�
 - API를 못 부르면 `main.js`의 `CAT_SNAPSHOT`(2026.11.24 기준)에서 골라요
 
 ## 맨 위 영상 (01)
-- 유튜브 `uiY4RnOWrjw`([골드보이] 웹뮤지컬 Ep.1)의 썸네일을 포스터로 보여주고, 재생 버튼을 누르면 29:00(`data-yt-start="1740"`)부터 유튜브 영상으로 바뀌어요
-- 영상을 바꾸려면 `index.html`의 `.stage-screen`에서 `data-yt`, `data-yt-start`, 포스터 주소를 바꾸면 돼요
-- 내 컴퓨터에서 파일을 바로 열면(file://) 유튜브가 막아요(오류 153). GitHub Pages 주소에서 확인하세요
+- 연극 <장도> 영상 `src/assets/video/hero-jangdo.mp4`(약 13초, 소리 없음, 0.9MB)이 재생바 없이 자동 반복 재생돼요. 포스터는 `hero-jangdo.jpg`
+- 영상 위에 LIVE 표시, 관람 인원, 관객 채팅, 제목(연극 · 장도)이 떠요
+- 영상을 바꾸려면 같은 이름으로 파일을 바꾸거나 `index.html`의 `.stage-video` 주소를 바꾸면 돼요
