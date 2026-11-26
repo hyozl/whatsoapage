@@ -302,3 +302,12 @@ Figma **`자료 · 캡처`** 페이지의 캡처를 PNG로 내보내 아래 이�
 - 연극 <장도> 영상 `src/assets/video/hero-jangdo.mp4`(약 13초, 소리 없음, 0.9MB)이 재생바 없이 자동 반복 재생돼요. 포스터는 `hero-jangdo.jpg`
 - 영상 위에 LIVE 표시, 관람 인원, 관객 채팅, 제목(연극 · 장도)이 떠요
 - 영상을 바꾸려면 같은 이름으로 파일을 바꾸거나 `index.html`의 `.stage-video` 주소를 바꾸면 돼요
+
+## 관람 단계 화면 캡처 (02)
+| 단계 | PC | 모바일 |
+|---|---|---|
+| STEP 1 작품 고르기 | `watch-pc.png` (아직 없음) | `watch-mobile.jpg` ✅ |
+| STEP 2 작품별로 결제하기 | `detail-pc.png` (아직 없음) | `detail-mobile.jpg` ✅ |
+| STEP 3 어디서나 관람하기 | `play-pc.png` (아직 없음) | `play-mobile.jpg` ✅ |
+- 모바일 캡처는 브라우저 아래 주소창을 잘라내고 폭 640px로 줄여 넣었어요
+- "고르기 어렵다면" 노트북 화면은 따로 `oatheme-pc.png` / `oatheme-mobile.png` (오뗌극장 화면)을 써요

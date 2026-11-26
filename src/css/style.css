@@ -1454,3 +1454,6 @@ body { color: var(--ink); }
 .stage-screen.has-video .stage-glow { opacity: .14 !important; }
 /* 03 모드 카드: 유료 작품(PAY) 카드도 마우스 올리면 그림자 */
 .modes li:hover, .modes li.is-accent:hover, .modes li.is-pay:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(52,26,90,.12) !important; }
+/* 휴대폰 화면 캡처: 가로 폭에 맞추고 위에서부터 보여주기 (양옆 안 잘리게) */
+.phone-screen img { height: auto !important; object-fit: contain; object-position: top center; }
+.phone-screen { background: #f7f7f7 !important; }
