@@ -306,8 +306,8 @@ Figma **`자료 · 캡처`** 페이지의 캡처를 PNG로 내보내 아래 이�
 ## 관람 단계 화면 캡처 (02)
 | 단계 | PC | 모바일 |
 |---|---|---|
-| STEP 1 작품 고르기 | `watch-pc.png` (아직 없음) | `watch-mobile.jpg` ✅ |
-| STEP 2 작품별로 결제하기 | `detail-pc.png` (아직 없음) | `detail-mobile.jpg` ✅ |
-| STEP 3 어디서나 관람하기 | `play-pc.png` (아직 없음) | `play-mobile.jpg` ✅ |
-- 모바일 캡처는 브라우저 아래 주소창을 잘라내고 폭 640px로 줄여 넣었어요
+| STEP 1 작품 고르기 | `watch-pc.jpg` ✅ | `watch-mobile.jpg` ✅ |
+| STEP 2 작품별로 결제하기 | `detail-pc.jpg` ✅ | `detail-mobile.jpg` ✅ |
+| STEP 3 어디서나 관람하기 | `play-pc.jpg` ✅ | `play-mobile.jpg` ✅ |
+- 모바일 캡처는 브라우저 주소창을 잘라내고 폭 640px, PC 캡처는 노트북 화면 비율(1.74:1)로 잘라 폭 1400px로 넣었어요. PC 캡처 오른쪽 위 프로필 사진은 흐리게 처리했어요
 - "고르기 어렵다면" 노트북 화면은 따로 `oatheme-pc.png` / `oatheme-mobile.png` (오뗌극장 화면)을 써요
