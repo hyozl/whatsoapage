@@ -295,3 +295,8 @@ Figma **`자료 · 캡처`** 페이지의 캡처를 PNG로 내보내 아래 이�
 - 카드마다 `https://api.oalive.kr/board/features/watch?...&sort=recommend`에서 추천 상위 5편 중 하나를 무작위로 골라 썸네일·제목을 넣고, 카드를 그 작품 페이지로 연결해요
 - 오아플러스는 제외(인터뷰 카테고리만 예외), 카테고리끼리 같은 작품이 겹치지 않게 골라요
 - API를 못 부르면 `main.js`의 `CAT_SNAPSHOT`(2026.11.24 기준)에서 골라요
+
+## 맨 위 영상 (01)
+- 유튜브 `uiY4RnOWrjw`([골드보이] 웹뮤지컬 Ep.1)의 썸네일을 포스터로 보여주고, 재생 버튼을 누르면 29:00(`data-yt-start="1740"`)부터 유튜브 영상으로 바뀌어요
+- 영상을 바꾸려면 `index.html`의 `.stage-screen`에서 `data-yt`, `data-yt-start`, 포스터 주소를 바꾸면 돼요
+- 내 컴퓨터에서 파일을 바로 열면(file://) 유튜브가 막아요(오류 153). GitHub Pages 주소에서 확인하세요

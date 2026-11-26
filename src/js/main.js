@@ -75,8 +75,8 @@
     const chats = $$('.stage-chat li', stage);
     const bar = $('[data-stage-bar]', stage);
     const time = $('[data-stage-time]', stage);
-    const TOTAL = 330; // 05:30
-    let sec = 134;      // 02:14 에서 시작
+    const TOTAL = 3600;
+    let sec = 1740;     // 29:00 에서 시작 (유튜브 시작 지점과 같게)
     let ci = 0, timer;
     const render = () => {
       if (bar) bar.style.width = (sec / TOTAL) * 100 + '%';
@@ -92,7 +92,25 @@
     };
     render();
     if (REDUCE) chats.forEach((c) => c.classList.add('is-show'));
-    else onView(stage, (vis) => { clearInterval(timer); if (vis) timer = setInterval(step, 1000); });
+    else onView(stage, (vis) => { clearInterval(timer); if (vis && !stage.classList.contains('is-playing')) timer = setInterval(step, 1000); });
+    // 재생을 누르면 유튜브 영상으로 바꿔요 (29분부터, 소리 켜고 재생)
+    const yt = stage.dataset.yt;
+    const playBtn = $('.stage-play', stage);
+    if (yt && playBtn) {
+      playBtn.addEventListener('click', () => {
+        clearInterval(timer);
+        const f = document.createElement('iframe');
+        f.className = 'stage-yt';
+        f.src = 'https://www.youtube.com/embed/' + yt + '?start=' + (stage.dataset.ytStart || 0) + '&autoplay=1&rel=0&playsinline=1&modestbranding=1';
+        f.title = '오아라이브 영상';
+        f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+        f.allowFullscreen = true;
+        f.referrerPolicy = 'strict-origin-when-cross-origin';
+        stage.appendChild(f);
+        stage.classList.add('is-playing');
+      });
+    }
+
   }
 
   /* ---------- 02 스텝 플레이어: 3초마다 자동으로 넘어가고, 누르면 그 단계로 (진행바 채움 없음) ---------- */
