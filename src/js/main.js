@@ -172,9 +172,6 @@
       const n = Math.max(1, Math.min(8, Math.round(Number(range.value))));
       tip.textContent = 'W' + 'o'.repeat(n) + 'W';
       tipBox.classList.toggle('is-wow', n === 8);
-      // WoW 손그림: 5개부터 나타나서 점점 커지고, 끝까지 올리면 통통 튀어요
-      const wi = $('[data-wow-illust]');
-      if (wi) { wi.classList.toggle('is-on', n >= 5); wi.classList.toggle('is-max', n === 8); wi.style.setProperty('--wow-s', (0.7 + (n - 5) * 0.1).toFixed(2)); }
       range.setAttribute('aria-valuetext', tip.textContent);
       // 말풍선이 양 끝에서 잘리지 않게
       const half = tipBox.offsetWidth / 2 + 4, wrapW = range.parentElement.offsetWidth;
