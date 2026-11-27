@@ -1591,3 +1591,14 @@ body { color: var(--ink); }
 /* 영상 LIVE 표시: 점과 글자 가운데 정렬, 오아 보라색 */
 .stage-top .chip-live { background: var(--brand-color, #9450E7) !important; display: inline-flex !important; align-items: center; justify-content: center; gap: 6px; line-height: 1 !important; padding: 5px 8px 5px 9px !important; }
 .stage-top .chip-live::before { position: static !important; margin: 0 !important; flex: 0 0 auto; }
+
+/* 03 모드 카드 → 티켓 손그림 (FREE VOD / PAY VOD / WoW) */
+.modes.modes-ticket { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.modes.modes-ticket li { position: relative; aspect-ratio: 1007 / 458; container-type: inline-size; padding: 0 !important; margin: 0;
+  background: url("../assets/illust/ticket.svg") center / 100% 100% no-repeat !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important;
+  transform: none; transition: transform .25s ease, filter .25s ease !important; text-align: left; }
+.modes.modes-ticket li:hover { transform: translateY(-3px) !important; box-shadow: none !important; filter: drop-shadow(0 10px 16px rgba(52,26,90,.14)); }
+.modes-ticket .tk-title { position: absolute; left: 29.8%; right: 12%; top: 26%; font-family: "Ordinary Artist", "Noto Sans KR", sans-serif; font-weight: 400; font-size: 12cqw; line-height: 1; color: var(--brand-color, #9450E7); white-space: nowrap; }
+.modes-ticket .tk-desc { position: absolute; left: 28.2%; right: 12%; top: 62%; margin: 0; font-family: "Noto Sans KR", sans-serif; font-weight: 600; font-size: 4.2cqw; line-height: 1.4; color: #212121; word-break: keep-all; }
+@media (max-width:1000px){ .modes.modes-ticket { grid-template-columns: 1fr; max-width: 520px; margin-left: auto; margin-right: auto; } }
+@media (max-width:767px){ .modes.modes-ticket { gap: 14px; } }
