@@ -1461,3 +1461,87 @@ body { color: var(--ink); }
 .laptop-screen, .phone-screen { position: relative; }
 .laptop-screen .step-fade { width: 100%; height: 100%; }
 .phone-screen .step-fade { width: 100%; }
+
+/* ===== 손그림 일러스트 ===== */
+/* 04 오아가 골라드려요: 분석 보드 (노트북 자리) */
+.curation .ai-wrap { flex: 1 1 0; min-width: 0; max-width: 780px; align-self: center; }
+.ai-board { display: block; width: 100%; height: auto; overflow: visible; }
+.ai-t { font-family: "Noto Sans KR", sans-serif; font-size: 34px; font-weight: 400; fill: #212121; opacity: 0; }
+.ai-t-score { font-size: 52px; font-weight: 600; }
+.ai-t-score tspan { fill: var(--brand-color, #8f51e1); }
+.ai-arc, .ai-ring { transform-box: view-box; transform-origin: 825px 455px; }
+.ai-node, .ai-eye, .ai-hat, .ai-icon, .ai-line, .ai-arm-left, .ai-arm-right { transform-box: fill-box; }
+.ai-node { transform-origin: center; }
+.ai-line { transform: scaleX(0); opacity: 0; }
+.ai-line-1 { transform-origin: 0% 100%; }
+.ai-line-2, .ai-line-3 { transform-origin: 100% 100%; }
+.ai-icon { opacity: 0; transform: translateY(14px) scale(.9); transform-origin: center bottom; }
+.ai-arm-right { transform-origin: 0% 0%; }
+.ai-arm-left { transform-origin: 100% 90%; }
+.ai-eye { transform-origin: center; }
+.ai-hat { transform-origin: 50% 100%; }
+
+.ai-wrap.is-on .ai-arc { animation: aiSpin 7s linear infinite; }
+.ai-wrap.is-on .ai-ring { animation: aiPulse 2.6s ease-in-out infinite; }
+.ai-wrap.is-on .ai-node { animation: aiNode 1.8s ease-in-out infinite; }
+.ai-wrap.is-on .ai-node:nth-of-type(2) { animation-delay: .6s; }
+.ai-wrap.is-on .ai-node:nth-of-type(3) { animation-delay: 1.2s; }
+.ai-wrap.is-on .ai-line { animation: aiDraw .7s cubic-bezier(.3,.7,.3,1) forwards; }
+.ai-wrap.is-on .ai-line-2 { animation-delay: .25s; }
+.ai-wrap.is-on .ai-line-3 { animation-delay: .5s; }
+.ai-wrap.is-on .ai-icon { animation: aiIconIn .6s ease forwards, aiFloat 3.2s ease-in-out 1.4s infinite; }
+.ai-wrap.is-on .ai-icon-musical { animation-delay: .7s, 1.4s; }
+.ai-wrap.is-on .ai-icon-star { animation-delay: .9s, 1.8s; }
+.ai-wrap.is-on .ai-icon-play { animation-delay: 1.1s, 2.2s; }
+.ai-wrap.is-on .ai-t { animation: aiFade .5s ease forwards; }
+.ai-wrap.is-on .ai-t-1 { animation-delay: .9s; }
+.ai-wrap.is-on .ai-t-2 { animation-delay: 1.1s; }
+.ai-wrap.is-on .ai-t-3 { animation-delay: 1.3s; }
+.ai-wrap.is-on .ai-t-score { animation-delay: .2s; }
+.ai-wrap.is-on .ai-arm-right { animation: aiWaveR 1.6s ease-in-out infinite; }
+.ai-wrap.is-on .ai-arm-left { animation: aiWaveL 2.4s ease-in-out infinite; }
+.ai-wrap.is-on .ai-eye { animation: aiBlink 4.2s ease-in-out infinite; }
+.ai-wrap.is-on .ai-hat { animation: aiHat 2.4s ease-in-out infinite; }
+
+@keyframes aiSpin { to { transform: rotate(360deg); } }
+@keyframes aiPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.025); } }
+@keyframes aiNode { 0%,100% { transform: scale(1); } 50% { transform: scale(1.45); } }
+@keyframes aiDraw { 0% { transform: scaleX(0); opacity: 1; } 100% { transform: scaleX(1); opacity: 1; } }
+@keyframes aiIconIn { to { opacity: 1; transform: none; } }
+@keyframes aiFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes aiFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes aiWaveR { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(-16deg); } }
+@keyframes aiWaveL { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(10deg); } }
+@keyframes aiBlink { 0%,92%,100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+@keyframes aiHat { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-5px) rotate(-4deg); } }
+
+@media (max-width:767px){
+  .curation .ai-wrap { display: block; width: 100%; max-width: 100%; }
+  .ai-t { font-size: 40px; } .ai-t-score { font-size: 60px; }
+}
+
+/* 07·10 자주 묻는 질문: 물음표 손그림 */
+.sec-head.has-q { position: relative; }
+.faq-q-illust { position: absolute; width: 96px; height: auto; left: calc(50% + 110px); top: -42px; transform-origin: 50% 85%; animation: qWobble 3.2s ease-in-out infinite; pointer-events: none; }
+@keyframes qWobble { 0%,100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg) translateY(-4px); } }
+@media (max-width:767px){ .faq-q-illust { width: 60px; left: calc(50% + 66px); top: -30px; } }
+
+/* 03 WoW 슬라이더: 많이 올리면 WoW 손그림 등장 */
+.price-player { position: relative; }
+.wow-illust { position: absolute; left: -6px; top: -128px; width: 128px; height: auto; opacity: 0; transform: scale(.4) rotate(-14deg); transform-origin: 30% 90%; transition: opacity .3s ease, transform .45s cubic-bezier(.3,1.6,.5,1); pointer-events: none; }
+.wow-illust.is-on { opacity: 1; transform: scale(var(--wow-s, .8)) rotate(-4deg); }
+.wow-illust.is-max { animation: wowJump .9s ease-in-out infinite; }
+@keyframes wowJump { 0%,100% { transform: scale(1) rotate(-4deg); } 50% { transform: scale(1.08) rotate(4deg) translateY(-6px); } }
+@media (max-width:767px){ .wow-illust { width: 88px; top: -96px; left: -4px; } }
+
+@media (prefers-reduced-motion: reduce){
+  .ai-wrap * , .faq-q-illust, .wow-illust { animation: none !important; }
+  .ai-line, .ai-icon, .ai-t { opacity: 1 !important; transform: none !important; }
+}
+/* 조정: 모바일 보드 글자 키우기, WoW 손그림 위치 (설명 글과 안 겹치게) */
+@media (max-width:767px){
+  .ai-t { font-size: 52px !important; } .ai-t-3 { font-size: 46px !important; } .ai-t-score { font-size: 76px !important; }
+}
+.wow-illust { top: -104px; width: 108px; left: -4px; }
+@media (max-width:767px){ .wow-illust { width: 74px; top: -76px; left: -2px; } }
+@media (max-width:767px){ #wow .price-player { margin-top: 64px !important; } }

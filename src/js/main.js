@@ -172,6 +172,9 @@
       const n = Math.max(1, Math.min(8, Math.round(Number(range.value))));
       tip.textContent = 'W' + 'o'.repeat(n) + 'W';
       tipBox.classList.toggle('is-wow', n === 8);
+      // WoW 손그림: 5개부터 나타나서 점점 커지고, 끝까지 올리면 통통 튀어요
+      const wi = $('[data-wow-illust]');
+      if (wi) { wi.classList.toggle('is-on', n >= 5); wi.classList.toggle('is-max', n === 8); wi.style.setProperty('--wow-s', (0.7 + (n - 5) * 0.1).toFixed(2)); }
       range.setAttribute('aria-valuetext', tip.textContent);
       // 말풍선이 양 끝에서 잘리지 않게
       const half = tipBox.offsetWidth / 2 + 4, wrapW = range.parentElement.offsetWidth;
@@ -296,6 +299,21 @@
     };
     showcase.addEventListener('click', (e) => { const c = e.target.closest('.sc-card'); if (c) rotateTo(c); });
     showcase.addEventListener('keydown', (e) => { if (e.key !== 'Enter' && e.key !== ' ') return; const c = e.target.closest('.sc-card'); if (c) { e.preventDefault(); rotateTo(c); } });
+  }
+
+  /* ---------- 04 오아가 골라드려요: 분석 보드 ---------- */
+  const aiBoard = $('[data-ai-board]');
+  if (aiBoard) {
+    const cnt = $('[data-ai-count]', aiBoard);
+    let played = false;
+    onView(aiBoard, (vis) => {
+      if (!vis || played) return;
+      played = true;
+      aiBoard.classList.add('is-on');
+      const t0 = performance.now(), dur = 1600;
+      const tick = (t) => { const k = Math.min(1, (t - t0) / dur); cnt.textContent = Math.round(100 * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); };
+      requestAnimationFrame(tick);
+    }, { threshold: 0.35 });
   }
 
   /* ---------- 07·10 펼침 목록: 부드럽게 열리고, 하나만 열림 ---------- */
