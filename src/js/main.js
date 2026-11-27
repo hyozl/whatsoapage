@@ -274,21 +274,28 @@
     })).then((lists) => lists.forEach((l, n) => fill(catCards[n], pickOne(l))));
   }
 
-  /* ---------- 06 아티스트 카드: 누른 카드가 가운데로 오도록 회전 ---------- */
+  /* ---------- 06 아티스트 카드: 누르면 왼쪽으로 한 칸씩 회전 ---------- */
   const showcase = $('.showcase');
   if (showcase) {
     let busy = false;
-    const rotateTo = (card) => {
-      const cards = $$('.sc-card', showcase);
-      const i = cards.indexOf(card);
-      if (busy || i < 0 || i === 1) return;
+    const rotateLeft = () => {
+      if (busy) return;
       busy = true;
+      const cards = $$('.sc-card', showcase);
       const first = new Map(cards.map((c) => [c, c.getBoundingClientRect()]));
-      // 왼쪽을 누르면 오른쪽으로, 오른쪽을 누르면 왼쪽으로 한 칸씩 돌아요
-      if (i === 0) showcase.insertBefore(cards[2], cards[0]);
-      else showcase.appendChild(cards[0]);
+      const out = cards[0];
+      showcase.appendChild(out); // 맨 앞 카드가 맨 뒤로: 모두 왼쪽으로 한 칸
+      const vertical = getComputedStyle(showcase).flexDirection === 'column';
       cards.forEach((c) => {
         const a = first.get(c), b = c.getBoundingClientRect();
+        if (c === out) {
+          // 빠지는 카드는 오른쪽(모바일은 아래)에서 살며시 들어와요
+          c.animate([
+            { transform: vertical ? 'translateY(40px)' : 'translateX(60px)', opacity: 0 },
+            { transform: 'none', opacity: 1 }
+          ], { duration: 520, easing: 'cubic-bezier(.22,.8,.24,1)' });
+          return;
+        }
         const dx = a.left - b.left, dy = a.top - b.top, sy = a.height / b.height;
         c.animate([
           { transform: 'translate(' + dx + 'px,' + dy + 'px) scaleY(' + sy + ')', transformOrigin: 'top center' },
@@ -297,8 +304,8 @@
       });
       setTimeout(() => { busy = false; }, 540);
     };
-    showcase.addEventListener('click', (e) => { const c = e.target.closest('.sc-card'); if (c) rotateTo(c); });
-    showcase.addEventListener('keydown', (e) => { if (e.key !== 'Enter' && e.key !== ' ') return; const c = e.target.closest('.sc-card'); if (c) { e.preventDefault(); rotateTo(c); } });
+    showcase.addEventListener('click', (e) => { if (e.target.closest('.sc-card')) rotateLeft(); });
+    showcase.addEventListener('keydown', (e) => { if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.sc-card')) { e.preventDefault(); rotateLeft(); } });
   }
 
   /* ---------- 04 오아가 골라드려요: 분석 보드 ---------- */
