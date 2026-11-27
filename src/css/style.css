@@ -1572,7 +1572,7 @@ body { color: var(--ink); }
 .steps .step > strong { line-height: 1.2 !important; }
 @media (max-width:767px){ .steps .step > .step-no { font-size: 16px !important; } }
 /* FAQ 답변 강조 */
-.faq-a strong { font-weight: 600; color: #212121; }
+.faq-a strong { font-weight: 600; color: inherit; }
 /* WoW 손그림: o가 많아질수록 점점 커져요 (50% → 100%) */
 .price-track .wow-illust { width: calc(124px * var(--wow-k, .714)) !important; transition: opacity .25s ease, width .25s ease !important; }
 @media (max-width:767px){ .price-track .wow-illust { width: calc(86px * var(--wow-k, .714)) !important; } }
