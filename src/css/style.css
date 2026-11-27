@@ -1571,3 +1571,5 @@ body { color: var(--ink); }
 .steps .step > .step-no { font-size: 20px !important; line-height: 1.2 !important; }
 .steps .step > strong { line-height: 1.2 !important; }
 @media (max-width:767px){ .steps .step > .step-no { font-size: 16px !important; } }
+/* FAQ 답변 강조 */
+.faq-a strong { font-weight: 600; color: #212121; }
