@@ -1602,3 +1602,13 @@ body { color: var(--ink); }
 .modes-ticket .tk-desc { position: absolute; left: 28.2%; right: 12%; top: 62%; margin: 0; font-family: "Noto Sans KR", sans-serif; font-weight: 600; font-size: 4.2cqw; line-height: 1.4; color: #212121; word-break: keep-all; }
 @media (max-width:1000px){ .modes.modes-ticket { grid-template-columns: 1fr; max-width: 520px; margin-left: auto; margin-right: auto; } }
 @media (max-width:767px){ .modes.modes-ticket { gap: 14px; } }
+/* 티켓 글: 보통 굵기, 제목·설명 왼쪽 끝 맞추고 티켓 가운데 높이에 */
+.modes.modes-ticket li { display: flex !important; flex-direction: column; justify-content: center; gap: 3.2cqw; padding: 0 12.5% 0 30% !important; }
+.modes-ticket .tk-title, .modes-ticket .tk-desc { position: static !important; left: auto; right: auto; top: auto; }
+.modes-ticket .tk-title { font-size: 11cqw !important; line-height: .95 !important; margin-top: 1cqw; }
+.modes-ticket .tk-desc { font-weight: 400 !important; font-size: 4.3cqw !important; line-height: 1.5 !important; color: #3a3a3a !important; }
+.modes.modes-ticket li { justify-content: center !important; align-items: flex-start !important; height: auto !important; min-height: 0 !important; }
+.modes-ticket .tk-desc { margin: 0 !important; }
+/* cqw는 자식에서만 티켓 폭 기준이라, 간격은 설명 글 위 여백으로 */
+.modes.modes-ticket li { gap: 0 !important; }
+.modes-ticket .tk-desc { margin-top: 5cqw !important; }
