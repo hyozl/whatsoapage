@@ -1563,3 +1563,7 @@ body { color: var(--ink); }
 /* WoW 손그림: 조금 더 크게, 바 값에 따라 연함→진함 */
 .price-track .wow-illust { width: 124px !important; transition: opacity .25s ease !important; }
 @media (max-width:767px){ .price-track .wow-illust { width: 86px !important; } }
+/* 물음표: 제목에서 조금 더 오른쪽, 기울이지 않기 */
+.faq-q-illust { left: calc(50% + 124px) !important; transform: none !important; }
+@media (max-width:767px){ .faq-q-illust { left: calc(50% + 76px) !important; } }
+@media (max-width:767px){ .faq-q-illust { left: calc(50% + 86px) !important; } }
