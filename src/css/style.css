@@ -1556,3 +1556,7 @@ body { color: var(--ink); }
 .price-track .wow-illust { bottom: 14px !important; z-index: 0; }
 .price-track .price-tip { z-index: 2; }
 .price-track .wow-illust { left: 0 !important; }
+/* 관람 단계: "STEP 01 작품 고르기" 한 줄로 */
+.steps .step > .step-no, .steps .step > strong { display: inline-block !important; vertical-align: baseline; margin: 0 !important; }
+.steps .step > .step-no { margin-right: 10px !important; }
+.steps .step > p { display: block !important; }
