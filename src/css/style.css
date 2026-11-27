@@ -1586,7 +1586,7 @@ body { color: var(--ink); }
 /* 관람 단계 전환 중 노트북 화면이 휴대폰 위로 올라오지 않게 */
 .laptop-screen, .phone-screen { isolation: isolate; }
 .devices .phone { z-index: 5; }
-.devices .laptop { position: relative; z-index: 1; }
+.devices .laptop { z-index: 1; }
 
 /* 영상 LIVE 표시: 점과 글자 가운데 정렬, 오아 보라색 */
 .stage-top .chip-live { background: var(--brand-color, #9450E7) !important; display: inline-flex !important; align-items: center; justify-content: center; gap: 6px; line-height: 1 !important; padding: 5px 8px 5px 9px !important; }
@@ -1612,3 +1612,6 @@ body { color: var(--ink); }
 /* cqw는 자식에서만 티켓 폭 기준이라, 간격은 설명 글 위 여백으로 */
 .modes.modes-ticket li { gap: 0 !important; }
 .modes-ticket .tk-desc { margin-top: 5cqw !important; }
+/* 티켓 글자 크기: cqw는 안쪽 글 영역(티켓 폭의 57.5%) 기준이라 다시 계산 */
+.modes-ticket .tk-title { font-size: 19cqw !important; margin-top: 0 !important; }
+.modes-ticket .tk-desc { font-size: 7.6cqw !important; margin-top: 7cqw !important; }
