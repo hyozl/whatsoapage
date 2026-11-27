@@ -1545,3 +1545,5 @@ body { color: var(--ink); }
 .wow-illust { top: -104px; width: 108px; left: -4px; }
 @media (max-width:767px){ .wow-illust { width: 74px; top: -76px; left: -2px; } }
 @media (max-width:767px){ #wow .price-player { margin-top: 64px !important; } }
+/* FAQ: 맨 위 질문 위에도 선 */
+.faq li:first-child { border-top: 1px solid var(--sd-border); }
