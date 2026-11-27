@@ -1615,3 +1615,18 @@ body { color: var(--ink); }
 /* 티켓 글자 크기: cqw는 안쪽 글 영역(티켓 폭의 57.5%) 기준이라 다시 계산 */
 .modes-ticket .tk-title { font-size: 19cqw !important; margin-top: 0 !important; }
 .modes-ticket .tk-desc { font-size: 7.6cqw !important; margin-top: 7cqw !important; }
+/* 태블릿(768~1000px): 아티스트 카드 3장이 화면 안에 들어오게 */
+@media (max-width:1000px) and (min-width:768px){
+  .showcase { gap: 14px; }
+  .sc-card { width: auto !important; flex: 1 1 0 !important; min-width: 0; padding: 0 16px 18px !important; }
+  .showcase .sc-card:nth-child(1) { height: 420px; } .showcase .sc-card:nth-child(2) { height: 470px; } .showcase .sc-card:nth-child(3) { height: 400px; }
+  .sc-card h3.en { font-size: 34px !important; } .sc-card p { font-size: 13px !important; }
+}
+/* 태블릿(768~1000px) 정리: 모바일처럼 위아래로 쌓기 */
+@media (max-width:1000px) and (min-width:768px){
+  .split { grid-template-columns: 1fr !important; }
+  .curation { flex-direction: column !important; align-items: stretch !important; gap: 24px !important; }
+  .curation .ai-wrap { max-width: 640px; width: 100%; margin: 0 auto; }
+  .curation .playlist { max-width: 640px; width: 100%; margin: 0 auto; }
+  .steps .step > .step-no { font-size: 16px !important; } .steps .step > strong { font-size: 16px !important; }
+}
