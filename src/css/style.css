@@ -1573,3 +1573,13 @@ body { color: var(--ink); }
 @media (max-width:767px){ .steps .step > .step-no { font-size: 16px !important; } }
 /* FAQ 답변 강조 */
 .faq-a strong { font-weight: 600; color: #212121; }
+/* WoW 손그림: o가 많아질수록 점점 커져요 (50% → 100%) */
+.price-track .wow-illust { width: calc(124px * var(--wow-k, .714)) !important; transition: opacity .25s ease, width .25s ease !important; }
+@media (max-width:767px){ .price-track .wow-illust { width: calc(86px * var(--wow-k, .714)) !important; } }
+/* 관람 단계 글: 겹쳐 보이지 않게, 앞 글이 사라진 뒤 다음 글이 나타나요 */
+@media (max-width:767px){
+  .steps .step, .steps .step:not(.is-active) { transition: opacity .3s ease, visibility 0s linear .3s !important; }
+  .steps .step.is-active { transition: opacity .4s ease .3s, visibility 0s linear .3s !important; }
+}
+/* 화면 이미지 자체의 페이드는 끄고 겹치는 디졸브만 사용 */
+[data-step-img] { transition: none !important; }

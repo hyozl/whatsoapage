@@ -114,9 +114,15 @@
       top.removeAttribute('data-step-img');
       top.removeAttribute('loading');
       top.className = (img.className + ' step-fade').trim();
-      top.style.cssText = 'position:absolute;left:' + img.offsetLeft + 'px;top:' + img.offsetTop + 'px;opacity:0;transition:opacity .7s ease;';
-      const done = () => { img.classList.remove('is-missing'); img.src = src; setTimeout(() => top.remove(), 60); };
-      top.onload = () => { box.appendChild(top); requestAnimationFrame(() => requestAnimationFrame(() => { top.style.opacity = 1; })); setTimeout(done, 720); };
+      top.style.cssText = 'position:absolute;left:' + img.offsetLeft + 'px;top:' + img.offsetTop + 'px;opacity:0;transition:opacity .8s cubic-bezier(.4,0,.2,1);z-index:1;';
+      const done = () => {
+        img.classList.remove('is-missing');
+        img.src = src;
+        // 아래 화면이 다 그려진 다음에 위 화면을 치워요 (깜빡임 방지)
+        const rm = () => requestAnimationFrame(() => top.remove());
+        if (img.decode) img.decode().then(rm, rm); else img.onload = rm;
+      };
+      top.onload = () => { box.appendChild(top); requestAnimationFrame(() => requestAnimationFrame(() => { top.style.opacity = 1; })); setTimeout(done, 820); };
       top.onerror = () => { img.classList.add('is-missing'); img.src = src; };
       top.src = src;
     };
@@ -174,7 +180,7 @@
       tipBox.classList.toggle('is-wow', n === 8);
       // WoW 손그림: o가 적을 땐 연하고, 많아질수록 점점 진해져요
       const wi = $('.wow-illust');
-      if (wi) wi.style.opacity = ((n - 1) / 7).toFixed(2);
+      if (wi) { wi.style.opacity = ((n - 1) / 7).toFixed(2); wi.style.setProperty('--wow-k', (0.5 + (n - 1) / 14).toFixed(3)); } // 크기도 50% → 100%
       range.setAttribute('aria-valuetext', tip.textContent);
       // 말풍선이 양 끝에서 잘리지 않게
       const half = tipBox.offsetWidth / 2 + 4, wrapW = range.parentElement.offsetWidth;
