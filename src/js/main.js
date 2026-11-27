@@ -174,7 +174,7 @@
       tipBox.classList.toggle('is-wow', n === 8);
       // WoW 손그림: o가 적을 땐 연하고, 많아질수록 점점 진해져요
       const wi = $('.wow-illust');
-      if (wi) wi.style.opacity = (0.2 + (n - 1) / 7 * 0.8).toFixed(2);
+      if (wi) wi.style.opacity = ((n - 1) / 7).toFixed(2);
       range.setAttribute('aria-valuetext', tip.textContent);
       // 말풍선이 양 끝에서 잘리지 않게
       const half = tipBox.offsetWidth / 2 + 4, wrapW = range.parentElement.offsetWidth;
