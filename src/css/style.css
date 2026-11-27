@@ -1583,3 +1583,11 @@ body { color: var(--ink); }
 }
 /* 화면 이미지 자체의 페이드는 끄고 겹치는 디졸브만 사용 */
 [data-step-img] { transition: none !important; }
+/* 관람 단계 전환 중 노트북 화면이 휴대폰 위로 올라오지 않게 */
+.laptop-screen, .phone-screen { isolation: isolate; }
+.devices .phone { z-index: 5; }
+.devices .laptop { position: relative; z-index: 1; }
+
+/* 영상 LIVE 표시: 점과 글자 가운데 정렬, 오아 보라색 */
+.stage-top .chip-live { background: var(--brand-color, #9450E7) !important; display: inline-flex !important; align-items: center; justify-content: center; gap: 6px; line-height: 1 !important; padding: 5px 8px 5px 9px !important; }
+.stage-top .chip-live::before { position: static !important; margin: 0 !important; flex: 0 0 auto; }
